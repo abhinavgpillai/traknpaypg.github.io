@@ -290,6 +290,8 @@ public partial class PaymentRequest : System.Web.UI.Page
 }
 ```
 
+> Request to your server's Payment Request API would look like below:
+
 ```markdown
 {
     "amount": "2.00",
