@@ -18,23 +18,23 @@ To prevent the data tampering(and ensure data integrity) between the your app an
 Traknpay server.
 
 ```markdown
-Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the hash,
-a secure private key known as **SALT key** will be provided by Traknpay that needs to be stored very 
-**securely in your server**. Any compromise of the salt may lead to data tampering. 
+Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the 
+hash, a secure private key known as **SALT key** will be provided by Traknpay that needs to be 
+stored **very securely in your server**. Any compromise of the salt may lead to data tampering. 
 
 # The hash generation code has 3 components:
 
 1. **Concatenate** the request parameters(after **trimming** the blank spaces) separated by 
 **pipeline** in the order given below:   
 
-`hash_data="SALT|address_line_1|address_line_2|amount|api_key|city|country|currency|description|email
-|hash|mode|name|order_id|phone|return_url|state|udf1|udf2|udf3|udf4|udf5|zip_code"`
+`hash_data="SALT|address_line_1|address_line_2|amount|api_key|city|country|currency|description
+|email|hash|mode|name|order_id|phone|return_url|state|udf1|udf2|udf3|udf4|udf5|zip_code"`
 
 2. Change the string value obtained in step 1 to **UPPERCASE**.
 
-3. Calculate the **hash** of the string value obtained in step 2 using **sha512** algorithm(all major 
-languages would have an inhouse function to calculate the hash using SHA-512) and response the hash 
-value to the android app.
+3. Calculate the **hash** of the string value obtained in step 2 using **sha512** algorithm(all 
+major languages would have an in-house function to calculate the hash using SHA-512) and response 
+the hash value to the android app.
 
 ```
 
@@ -51,9 +51,9 @@ Hash Generation of Payment Request for different languages has been given below:
 		// TODO Auto-generated method stub
 		String salt = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
 		
-		String [] hash_columns = {"address_line_1", "address_line_2", "amount", "api_key", "city", 
-		"country", "currency","description", "email", "mode", "name", "order_id", "phone", "return_url", 
-		"state", "udf1", "udf2", "udf3", "udf4","udf5", "zip_code"};
+		String [] hash_columns = {"address_line_1", "address_line_2", "amount", "api_key", 
+		"city", "country", "currency","description", "email", "mode", "name", "order_id", 
+		"phone", "return_url", "state", "udf1", "udf2", "udf3", "udf4","udf5", "zip_code"};
 		
 		String hash_data = salt;
 		
@@ -96,7 +96,8 @@ Hash Generation of Payment Request for different languages has been given below:
 	    	//convert the byte to hex format method 1
 	    	StringBuffer hashCodeBuffer = new StringBuffer();
 	    	for (int i = 0; i < byteData.length; i++) {
-	            hashCodeBuffer.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+	            hashCodeBuffer.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16)
+		    .substring(1));
 	    	}
 		return hashCodeBuffer.toString().toUpperCase();
 	}
