@@ -17,9 +17,10 @@ To understand the Traknpay payment flow, you can download our sample app [here](
 To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up a API to calculate encrypted value (checksum) known as hash from the payment request parameters and secure SALT key(provided by Traknpay) before sending it to the Traknpay server.
 
 ```markdown
-Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the hash, a secure private key known as SALT key will be provided by Traknpay that needs to be stored very **securely** in your server. Any compromise of the salt may lead to data tampering.
-
-Hash Generation of Payment Request for different languages has been given below:
+Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the hash, a secure 
+private key known as **SALT key** will be provided by Traknpay that needs to be stored very **securely in your 
+server**. Any compromise of the salt may lead to data tampering. Hash Generation of Payment Request for different 
+languages has been given below:
 ```
 
 ```markdown
