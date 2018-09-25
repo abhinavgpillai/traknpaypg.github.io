@@ -351,15 +351,8 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
 ## collapsible markdown?
 
 <details><summary>CLICK ME</summary>
-<p>
-
-```markdown
-
+	
 print("hello world!")eeee
-
-```
-
-</p>
 </details>
 
 As Kanye West said:
