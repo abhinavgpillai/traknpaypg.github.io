@@ -30,8 +30,8 @@ The hash generation code has 3 components:
 
 2. Change the string value obtained in step 1 to UPPERCASE.
 
-3. Calculate the hash of the string value obtained in step 2 using "sha512" algorithm(all major languages would have an 
-inhouse function to calculate the hash using SHA-512) and response the hash value to the android app.
+3. Calculate the hash of the string value obtained in step 2 using "sha512" algorithm(all major languages would have
+an inhouse function to calculate the hash using SHA-512) and response the hash value to the android app.
 
 ```
 
