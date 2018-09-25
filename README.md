@@ -2,7 +2,7 @@
 
 This section will guide you in creating a framework for integrating with Traknpay Payment Gateway. 
 
-![alt text](https://github.com/traknpaypg/traknpaypg.github.io/blob/master/doc/images/overview.png)
+![Overview](https://github.com/traknpaypg/traknpaypg.github.io/blob/master/doc/images/overview.png)
 
 You can use the [editor on GitHub](https://github.com/traknpaypg/traknpaypg.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
