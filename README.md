@@ -23,10 +23,7 @@ Use the following sample java sequence to generate a request hash.
 **Java**
 public class PaymentRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String salt = "18e6063d410586se913fa536be8dbf237a6c15ed"; 
@@ -52,29 +49,29 @@ public class PaymentRequest extends HttpServlet {
 		}
 		
 		JsonObject jsonResponse = new JsonObject();
-        jsonResponse.addProperty("hash", hash);
-        jsonResponse.addProperty("status", "Kargopolov");
-        jsonResponse.addProperty("responseCode", "Kargopolov");
+                jsonResponse.addProperty("hash", hash);
+             	jsonResponse.addProperty("status", "Kargopolov");
+       		jsonResponse.addProperty("responseCode", "Kargopolov");
 
 
 		response.setContentType("application/json");
 		PrintWriter writer = response.getWriter();
 		writer.print(jsonResponse);
-        writer.flush();
+        	writer.flush();
 
 	}
 	
 	private static String getHashCodeFromString(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 			
 		MessageDigest md = MessageDigest.getInstance("SHA-512");
-	    md.update(str.getBytes("UTF-8"));
-	    byte byteData[] = md.digest();
+	    	md.update(str.getBytes("UTF-8"));
+	    	byte byteData[] = md.digest();
 
-	    //convert the byte to hex format method 1
-	    StringBuffer hashCodeBuffer = new StringBuffer();
-	    for (int i = 0; i < byteData.length; i++) {
-	        hashCodeBuffer.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-	    }
+	    	//convert the byte to hex format method 1
+	    	StringBuffer hashCodeBuffer = new StringBuffer();
+	    	for (int i = 0; i < byteData.length; i++) {
+	            hashCodeBuffer.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+	    	}
 		return hashCodeBuffer.toString().toUpperCase();
 	}
 	
