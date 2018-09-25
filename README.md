@@ -112,6 +112,8 @@ Hash Generation of Payment Request for different languages has been given below:
 </details>
 
 
+<details><summary><b>Java Servlet Sample Code</b></summary>
+<p>
 ```markdown
 **PHP Code**
 
@@ -194,6 +196,9 @@ Hash Generation of Payment Request for different languages has been given below:
 echo json_encode($output);`
 
 ```
+</p>
+</details>
+
 
 ```markdown
 **ASP.NET Code**
