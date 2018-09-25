@@ -11,14 +11,38 @@ This section will guide you in creating a framework for integrating Traknpay Pay
 
 ### Server Side Setup
 
-```markdown
-A hash is an encrypted value (checksum) that must be sent by the merchant in a payment request that is then sent back by PayUmoney in the payment response. A hash is used to protect transactions against “man in the middle” attacks.
+To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up a API to calculate encrypted value (checksum) known as hash from the payment request parameters and secure SALT key(provided by Traknpay) before sending it to the Traknpay server.
 
 Hash Generation for Payment Request
 Use the following sample java sequence to generate a request hash.
+
+```markdown
+
+{
+    "amount": "2.00",
+    "email": "test@gmail.com",
+    "name": "Test Name",
+    "phone": "9876543210",
+    "order_id": "12",
+    "currency": "INR",
+    "description": "test",
+    "city": "city",
+    "state": "state",
+    "zip_code": "123456",
+    "country": "IND",
+    "return_url": "https://ecaas.traknpay.in/response_page.php",
+    "mode": "TEST",
+    "udf1": "udf1",
+    "udf2": "udf2",
+    "udf3": "udf3",
+    "udf4": "udf4",
+    "udf5": "udf5",
+    "address_line_1": "addl1",
+    "address_line_2": "addl2",
+    "api_key": "ce937655-4421-4c6b-b4fb-b57785ea55c4"
+}
+
 ```
-
-
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
