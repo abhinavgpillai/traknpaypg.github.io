@@ -112,10 +112,11 @@ Hash Generation of Payment Request for different languages has been given below:
 </details>
 
 
-<details><summary><b>Java Servlet Sample Code</b></summary>
+<details><summary><b>PHP Sample Code</b></summary>
 <p>
+	
 ```markdown
-**PHP Code**
+**PHP Sample Code**
 
 `try {
 	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
@@ -200,8 +201,11 @@ echo json_encode($output);`
 </details>
 
 
+<details><summary><b>ASP.NET Sample Code</b></summary>
+<p>
+	
 ```markdown
-**ASP.NET Code**
+**ASP.NET Sample Code**
 
 `public partial class PaymentRequest : System.Web.UI.Page
     {
@@ -301,6 +305,9 @@ echo json_encode($output);`
         }
 }`
 ```
+
+</p>
+</details>
 
 ```markdown
 {
