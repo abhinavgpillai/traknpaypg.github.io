@@ -111,27 +111,27 @@ public class PaymentRequest extends HttpServlet {
 try {
 	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 
-	$params["api_key"]=$_POST["api_key"];
-	$params["amount"]=$_POST["amount"];
-	$params["email"]=$_POST["email"];
-	$params["name"]=$_POST["name"];
-	$params["phone"]=$_POST["phone"];
-	$params["order_id"]=$_POST["order_id"];
-	$params["currency"]=$_POST["currency"];
-	$params["description"]=$_POST["description"];
-	$params["city"]=$_POST["city"];
-	$params["state"]=$_POST["state"];
-	$params["address_line_1"]=$_POST["address_line_1"];
-	$params["address_line_2"]=$_POST["address_line_2"];
-	$params["zip_code"]=$_POST["zip_code"];
-	$params["country"]=$_POST["country"];
-	$params["return_url"]=$_POST["return_url"];
-	$params["mode"]=$_POST["mode"];
-	$params["udf1"]=$_POST["udf1"];
-	$params["udf2"]=$_POST["udf2"];
-	$params["udf3"]=$_POST["udf3"];
-	$params["udf4"]=$_POST["udf4"];
-	$params["udf5"]=$_POST["udf5"];
+	$params["api_key"]=trim($_POST["api_key"]);
+	$params["amount"]=trim($_POST["amount"]);
+	$params["email"]=trim($_POST["email"]);
+	$params["name"]=trim($_POST["name"]);
+	$params["phone"]=trim($_POST["phone"]);
+	$params["order_id"]=trim($_POST["order_id"]);
+	$params["currency"]=trim($_POST["currency"]);
+	$params["description"]=trim($_POST["description"]);
+	$params["city"]=trim($_POST["city"]);
+	$params["state"]=trim($_POST["state"]);
+	$params["address_line_1"]=trim($_POST["address_line_1"]);
+	$params["address_line_2"]=trim($_POST["address_line_2"]);
+	$params["zip_code"]=trim($_POST["zip_code"]);
+	$params["country"]=trim($_POST["country"]);
+	$params["return_url"]=trim($_POST["return_url"];)
+	$params["mode"]=trim($_POST["mode"]);
+	if(isset($_POST["udf1"])) $params["udf1"]=trim($_POST["udf1"]);
+	if(isset($_POST["udf2"])) $params["udf2"]=trim($_POST["udf2"]);
+	if(isset($_POST["udf3"])) $params["udf3"]=trim($_POST["udf3"]);
+	if(isset($_POST["udf4"])) $params["udf4"]=trim($_POST["udf4"]);
+	if(isset($_POST["udf5"])) $params["udf5"]=trim($_POST["udf5"]);
 
 	$hash_columns = [
 		'name',
