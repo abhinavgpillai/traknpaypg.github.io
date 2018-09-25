@@ -24,11 +24,14 @@ Use the following sample java sequence to generate a request hash.
 public class PaymentRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String salt = "18e6063d410586se913fa536be8dbf237a6c15ed"; 
+		String salt = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
 		
-		String [] hash_columns = {"address_line_1", "address_line_2", "amount", "api_key", "city", "country", "currency", "description", "email", "mode", "name", "order_id", "phone", "return_url", "state", "udf1", "udf2", "udf3", "udf4", "udf5", "zip_code"};
+		String [] hash_columns = {"address_line_1", "address_line_2", "amount", "api_key", "city", "country", "currency",
+		"description", "email", "mode", "name", "order_id", "phone", "return_url", "state", "udf1", "udf2", "udf3", "udf4",
+		"udf5", "zip_code"};
 		
 		String hash_data = salt;
 		
@@ -61,7 +64,8 @@ public class PaymentRequest extends HttpServlet {
 
 	}
 	
-	private static String getHashCodeFromString(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	private static String getHashCodeFromString(String str) throws NoSuchAlgorithmException, 
+	UnsupportedEncodingException {
 			
 		MessageDigest md = MessageDigest.getInstance("SHA-512");
 	    	md.update(str.getBytes("UTF-8"));
@@ -77,8 +81,12 @@ public class PaymentRequest extends HttpServlet {
 	
 }
 
-**Java**
-hash = sha512("SALT|address_line_1|address_line_2|amount|api_key|city|country|currency|description|email|hash|mode|name|order_id|phone|return_url|state|udf1|udf2|udf3|udf4|udf5|zip_code");
+```
+
+```markdown
+**php**
+hash = sha512("SALT|address_line_1|address_line_2|amount|api_key|city|country|currency|description|email|
+hash|mode|name|order_id|phone|return_url|state|udf1|udf2|udf3|udf4|udf5|zip_code");
 ```
 
 ```markdown
