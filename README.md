@@ -1,13 +1,15 @@
 ## collapsible markdown?
 
 <details><summary>CLICK ME</summary>
-	
-```java
+<p>
 
-print("hello world!wwww")
-
+```markdown
+print("hello world!")
 ```
+
+</p>
 </details>
+
 
 ## Overview
 
