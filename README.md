@@ -292,7 +292,7 @@ public partial class PaymentRequest : System.Web.UI.Page
 
 > Request to your server's Payment Request API would look like below:
 
-```json
+```javascript
 {
     "amount": "2.00",
     "email": "test@gmail.com",
@@ -314,7 +314,7 @@ public partial class PaymentRequest : System.Web.UI.Page
     "udf5": "udf5",
     "address_line_1": "addl1",
     "address_line_2": "addl2",
-    "api_key": "ce937655-4421-4c6b-b4fb-b57785ea55c4"
+    "api_key": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXX"
 }
 
 ```
