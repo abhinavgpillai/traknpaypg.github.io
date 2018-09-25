@@ -24,8 +24,8 @@ a secure private key known as **SALT key** will be provided by Traknpay that nee
 
 # The hash generation code has 3 components:
 
-1. **Concatenate** the request parameters(after **trimming** the blank spaces) separated by **pipeline**
-in the order below:   
+1. **Concatenate** the request parameters(after **trimming** the blank spaces) separated by 
+**pipeline** in the order given below:   
 
 `hash_data="SALT|address_line_1|address_line_2|amount|api_key|city|country|currency|description|email
 |hash|mode|name|order_id|phone|return_url|state|udf1|udf2|udf3|udf4|udf5|zip_code"`
