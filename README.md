@@ -20,8 +20,8 @@ Hash Generation for Payment Request
 Use the following sample java sequence to generate a request hash.
 
 ```markdown
-**Java**
-public class PaymentRequest extends HttpServlet {
+**Java Servlet Code**
+`public class PaymentRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -79,7 +79,7 @@ public class PaymentRequest extends HttpServlet {
 		return hashCodeBuffer.toString().toUpperCase();
 	}
 	
-}
+}`
 
 ```
 
