@@ -6,7 +6,7 @@ This section will guide you in creating a framework for integrating Traknpay Pay
 
 ### Prerequisites
 
-1. You should be a registered and approved merchant with Traknpay [register here!](https://biz.traknpay.in/auth/register).
+1. You should be a registered and approved merchant with Traknpay. If not registered, please [register here!](https://biz.traknpay.in/auth/register).
 2. You should have received the SALT and API key from Traknpay.
 
 ### Markdown
