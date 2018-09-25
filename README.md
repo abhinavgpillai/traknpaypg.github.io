@@ -14,8 +14,7 @@ To understand the Traknpay payment flow, you can download our sample app [here](
 
 ## Server Side Setup
 
-To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the 
-Traknpay server.
+To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API in your server to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the Traknpay server.
 
 ```markdown
 Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the 
@@ -190,7 +189,110 @@ echo json_encode($output);`
 ```
 
 ```markdown
+**ASP.NET Code**
 
+`public partial class CalculateHash : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string jsonResponse = "";
+            try
+            {
+                string hash_string = string.Empty;
+                string hashValue = string.Empty;
+                string SALT = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+
+                hash_string = SALT;
+                hash_string += '|' + Request.Form["address_line_1"].Trim();
+                hash_string += '|' + Request.Form["address_line_2"].Trim();
+                hash_string += '|' + Request.Form["amount"].Trim();
+                hash_string += '|' + Request.Form["api_key"].Trim();
+                hash_string += '|' + Request.Form["city"].Trim();
+                hash_string += '|' + Request.Form["country"].Trim();
+                hash_string += '|' + Request.Form["currency"].Trim();
+                hash_string += '|' + Request.Form["description"].Trim();
+                hash_string += '|' + Request.Form["email"].Trim();
+                hash_string += '|' + Request.Form["mode"].Trim();
+                hash_string += '|' + Request.Form["name"].Trim();
+                hash_string += '|' + Request.Form["order_id"].Trim();
+                hash_string += '|' + Request.Form["phone"].Trim();
+                hash_string += '|' + Request.Form["return_url"].Trim();
+                hash_string += '|' + Request.Form["state"].Trim();
+                if (!string.IsNullOrEmpty(Request.Form["udf1"].Trim()))
+                {
+                    hash_string += '|' + Request.Form["udf1"].Trim();
+                }
+                if (!string.IsNullOrEmpty(Request.Form["udf2"].Trim()))
+                {
+                    hash_string += '|' + Request.Form["udf2"].Trim();
+                }
+                if (!string.IsNullOrEmpty(Request.Form["udf3"].Trim()))
+                {
+                    hash_string += '|' + Request.Form["udf3"].Trim();
+                }
+                if (!string.IsNullOrEmpty(Request.Form["udf4"].Trim()))
+                {
+                    hash_string += '|' + Request.Form["udf4"].Trim();
+                }
+                if (!string.IsNullOrEmpty(Request.Form["udf5"].Trim()))
+                {
+                    hash_string += '|' + Request.Form["udf5"].Trim();
+                }
+                hash_string += '|' + Request.Form["zip_code"].Trim();
+
+                hash_string = hash_string.Substring(0, hash_string.Length);
+                hashValue = Generatehash512(hash_string).ToUpper();       
+
+			  
+			    var columns = new Dictionary<string, string>
+                {
+                    { "hash", hashValue},
+                    { "status", 0},
+                    { "responseCode", "Hash Created Successfully"},
+                };                
+                var jsSerializer = new JavaScriptSerializer();             
+                var jsonString = jsSerializer.Serialize(columns);
+			    
+			    return jsonString;
+
+            }
+            catch (Exception ex)
+            {
+                
+		       var columns = new Dictionary<string, string>
+               {
+                   { "hash", "INVALID"},
+                   { "status", 1},
+                   { "responseCode", ex.Message},
+               };            
+               var jsSerializer = new JavaScriptSerializer();               
+               var jsonString = jsSerializer.Serialize(columns);
+			   
+			   return jsonString;
+            }
+        }
+        
+        public string Generatehash512(string text)
+        {
+
+            byte[] message = Encoding.UTF8.GetBytes(text);
+
+            UnicodeEncoding UE = new UnicodeEncoding();
+            byte[] hashValue;
+            SHA512Managed hashString = new SHA512Managed();
+            string hex = "";
+            hashValue = hashString.ComputeHash(message);
+            foreach (byte x in hashValue)
+            {
+                hex += String.Format("{0:x2}", x);
+            }
+            return hex;
+
+        }
+}`
+```
+
+```markdown
 {
     "amount": "2.00",
     "email": "test@gmail.com",
