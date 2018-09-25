@@ -20,6 +20,71 @@ Hash Generation for Payment Request
 Use the following sample java sequence to generate a request hash.
 
 ```markdown
+**Java**
+public class PaymentRequest extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String salt = "18e6063d410586se913fa536be8dbf237a6c15ed"; 
+		
+		String [] hash_columns = {"address_line_1", "address_line_2", "amount", "api_key", "city", "country", "currency", "description", "email", "mode", "name", "order_id", "phone", "return_url", "state", "udf1", "udf2", "udf3", "udf4", "udf5", "zip_code"};
+		
+		String hash_data = salt;
+		
+		for( int i = 0; i < hash_columns.length; i++)
+		{
+			if(request.getParameter(hash_columns[i]).length() > 0 ){
+				hash_data += '|' + request.getParameter(hash_columns[i]);
+			}    
+			
+		}
+		
+		String hash = "";
+		try {
+			 hash = getHashCodeFromString(hash_data);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		JsonObject jsonResponse = new JsonObject();
+        jsonResponse.addProperty("hash", hash);
+        jsonResponse.addProperty("status", "Kargopolov");
+        jsonResponse.addProperty("responseCode", "Kargopolov");
+
+
+		response.setContentType("application/json");
+		PrintWriter writer = response.getWriter();
+		writer.print(jsonResponse);
+        writer.flush();
+
+	}
+	
+	private static String getHashCodeFromString(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+			
+		MessageDigest md = MessageDigest.getInstance("SHA-512");
+	    md.update(str.getBytes("UTF-8"));
+	    byte byteData[] = md.digest();
+
+	    //convert the byte to hex format method 1
+	    StringBuffer hashCodeBuffer = new StringBuffer();
+	    for (int i = 0; i < byteData.length; i++) {
+	        hashCodeBuffer.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+	    }
+		return hashCodeBuffer.toString().toUpperCase();
+	}
+	
+}
+
+**Java**
+hash = sha512("SALT|address_line_1|address_line_2|amount|api_key|city|country|currency|description|email|hash|mode|name|order_id|phone|return_url|state|udf1|udf2|udf3|udf4|udf5|zip_code");
+```
+
+```markdown
 
 {
     "amount": "2.00",
