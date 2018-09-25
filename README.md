@@ -18,9 +18,9 @@ To prevent the data tampering(and ensure data integrity) between the your app an
 Traknpay server.
 
 ```markdown
-Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the hash, a secure 
-private key known as **SALT key** will be provided by Traknpay that needs to be stored very **securely in your 
-server**. Any compromise of the salt may lead to data tampering. 
+Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the hash,
+a secure private key known as **SALT key** will be provided by Traknpay that needs to be stored very 
+**securely in your server**. Any compromise of the salt may lead to data tampering. 
 
 # The hash generation code has 3 components:
 
