@@ -353,9 +353,7 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
 <details><summary>CLICK ME</summary>
 <p>
 
-#### yes, even hidden code blocks!
-
-```python
+```markdown
 print("hello world!")
 ```
 
