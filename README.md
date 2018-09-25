@@ -37,10 +37,10 @@ the hash value to the android app.
 
 ```
 
-> Hash Generation of Payment Request for different languages has been given below:
+> Sample Hash Generation of Payment Request for different languages has been given below:
 
 ```java
-**Java Servlet Code**
+**Java Servlet Sample Code**
 
 public class PaymentRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -106,7 +106,7 @@ public class PaymentRequest extends HttpServlet {
 ```
 
 ```php
-**PHP Code**
+**PHP Sample Code**
 
 try {
 	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
@@ -189,7 +189,7 @@ echo json_encode($output);
 ```
 
 ```csharp
-**ASP.NET Code**
+**ASP.NET Sample Code**
 
 public partial class PaymentRequest : System.Web.UI.Page
     {
