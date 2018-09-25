@@ -39,19 +39,6 @@ the hash value to the android app.
 
 Hash Generation of Payment Request for different languages has been given below:
 
-## collapsible markdown?
-
-<details><summary>CLICK ME</summary>
-<p>
-
-#### yes, even hidden code blocks!
-
-```python
-print("hello world!")
-```
-
-</p>
-</details>
 ```markdown
 **Java Servlet Code**
 
