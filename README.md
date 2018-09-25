@@ -292,7 +292,7 @@ public partial class PaymentRequest : System.Web.UI.Page
 
 > Request to your server's Payment Request API would look like below:
 
-```markdown
+```json
 {
     "amount": "2.00",
     "email": "test@gmail.com",
@@ -305,7 +305,7 @@ public partial class PaymentRequest : System.Web.UI.Page
     "state": "state",
     "zip_code": "123456",
     "country": "IND",
-    "return_url": "https://ecaas.traknpay.in/response_page.php",
+    "return_url": "https://yourserver.com/response_page.php",
     "mode": "TEST",
     "udf1": "udf1",
     "udf2": "udf2",
