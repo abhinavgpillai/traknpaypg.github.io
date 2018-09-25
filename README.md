@@ -17,9 +17,10 @@ To understand the Traknpay payment flow, you can download our sample app [here](
 To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up a API to calculate encrypted value (checksum) known as hash from the payment request parameters and secure SALT key(provided by Traknpay) before sending it to the Traknpay server.
 
 ```markdown
-
 Hash Generation of Payment Request for different languages has been given below:
+```
 
+```markdown
 **Java Servlet Code**
 
 `public class PaymentRequest extends HttpServlet {
@@ -85,9 +86,89 @@ Hash Generation of Payment Request for different languages has been given below:
 ```
 
 ```markdown
-**php**
-hash = sha512("SALT|address_line_1|address_line_2|amount|api_key|city|country|currency|description|email|
-hash|mode|name|order_id|phone|return_url|state|udf1|udf2|udf3|udf4|udf5|zip_code");
+**PHP Code**
+
+`try {
+	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+
+	$params["api_key"]=$_POST["api_key"];
+	$params["amount"]=$_POST["amount"];
+	$params["email"]=$_POST["email"];
+	$params["name"]=$_POST["name"];
+	$params["phone"]=$_POST["phone"];
+	$params["order_id"]=$_POST["order_id"];
+	$params["currency"]=$_POST["currency"];
+	$params["description"]=$_POST["description"];
+	$params["city"]=$_POST["city"];
+	$params["state"]=$_POST["state"];
+	$params["address_line_1"]=$_POST["address_line_1"];
+	$params["address_line_2"]=$_POST["address_line_2"];
+	$params["zip_code"]=$_POST["zip_code"];
+	$params["country"]=$_POST["country"];
+	$params["return_url"]=$_POST["return_url"];
+	$params["mode"]=$_POST["mode"];
+	$params["udf1"]=$_POST["udf1"];
+	$params["udf2"]=$_POST["udf2"];
+	$params["udf3"]=$_POST["udf3"];
+	$params["udf4"]=$_POST["udf4"];
+	$params["udf5"]=$_POST["udf5"];
+
+	$hash_columns = [
+		'name',
+		'phone',
+		'email',
+		'description',
+		'amount',
+		'api_key',
+		'order_id',
+		'currency',
+		'city',
+		'state',
+		'address_line_1',
+		'address_line_2',
+		'country',
+		'zip_code',
+		'return_url',
+		'hash',
+		'mode',
+		'udf1',
+		'udf2',
+		'udf3',
+		'udf4',
+		'udf5'
+	];
+
+	sort($hash_columns);
+	$hash_data = $salt;
+
+	foreach ($hash_columns as $column) {
+		if (isset($params[$column])) {
+			if (strlen($params[$column]) > 0) {
+				$hash_data .= '|' . $params[$column];
+			}
+		}
+	}
+
+
+	/*	error_log($hash_data,3,"/home/vagrant/code/ecaas_error.txt");*/
+
+	$hash = null;
+	if (strlen($hash_data) > 0) {
+		$hash = strtoupper(hash("sha512", $hash_data));
+	}
+
+	$output['hash'] = $hash;
+	$output['status']=0;
+	$output['responseCode']="Hash Created Successfully";
+
+}catch(Exception $e) {
+	$output['hash'] = "INVALID";
+	$output['status']=1;
+	$output['responseCode']=$e->getMessage();
+}
+
+echo json_encode($output);`
+
 ```
 
 ```markdown
