@@ -127,11 +127,11 @@ try {
 	$params["country"]=trim($_POST["country"]);
 	$params["return_url"]=trim($_POST["return_url"];)
 	$params["mode"]=trim($_POST["mode"]);
-	if(isset($_POST["udf1"])) $params["udf1"]=trim($_POST["udf1"]);
-	if(isset($_POST["udf2"])) $params["udf2"]=trim($_POST["udf2"]);
-	if(isset($_POST["udf3"])) $params["udf3"]=trim($_POST["udf3"]);
-	if(isset($_POST["udf4"])) $params["udf4"]=trim($_POST["udf4"]);
-	if(isset($_POST["udf5"])) $params["udf5"]=trim($_POST["udf5"]);
+	if(!empty($_POST["udf1"])) $params["udf1"]=trim($_POST["udf1"]);
+	if(!empty($_POST["udf2"])) $params["udf2"]=trim($_POST["udf2"]);
+	if(!empty($_POST["udf3"])) $params["udf3"]=trim($_POST["udf3"]);
+	if(!empty($_POST["udf4"])) $params["udf4"]=trim($_POST["udf4"]);
+	if(!empty($_POST["udf5"])) $params["udf5"]=trim($_POST["udf5"]);
 
 	$hash_columns = [
 		'name',
