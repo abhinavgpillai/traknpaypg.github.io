@@ -59,7 +59,7 @@ public class PaymentRequest extends HttpServlet {
 		for( int i = 0; i < hash_columns.length; i++)
 		{
 			if(request.getParameter(hash_columns[i]).length() > 0 ){
-				hash_data += '|' + request.getParameter(hash_columns[i]);
+				hash_data += '|' + request.getParameter(hash_columns[i]).trim();
 			}    
 			
 		}
