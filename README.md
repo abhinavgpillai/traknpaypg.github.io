@@ -7,7 +7,7 @@ This section will guide you in creating a framework for integrating Traknpay Pay
 ### Prerequisites
 
 ```markdown
-1. Register as merchant with Traknpay[here](https://biz.traknpay.in/auth/register).
+1. Register as a merchant with Traknpay [here](https://biz.traknpay.in/auth/register).
 2. List
 ```
 
