@@ -39,9 +39,19 @@ the hash value to the android app.
 
 Hash Generation of Payment Request for different languages has been given below:
 
-<details><summary><b>Java Servlet Sample Code</b></summary>
+## collapsible markdown?
+
+<details><summary>CLICK ME</summary>
 <p>
 
+#### yes, even hidden code blocks!
+
+```python
+print("hello world!")
+```
+
+</p>
+</details>
 ```markdown
 **Java Servlet Code**
 
@@ -108,15 +118,8 @@ Hash Generation of Payment Request for different languages has been given below:
 
 ```
 
-</p>
-</details>
-
-
-<details><summary><b>PHP Sample Code</b></summary>
-<p>
-	
 ```markdown
-**PHP Sample Code**
+**PHP Code**
 
 `try {
 	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
@@ -197,15 +200,9 @@ Hash Generation of Payment Request for different languages has been given below:
 echo json_encode($output);`
 
 ```
-</p>
-</details>
 
-
-<details><summary><b>ASP.NET Sample Code</b></summary>
-<p>
-	
 ```markdown
-**ASP.NET Sample Code**
+**ASP.NET Code**
 
 `public partial class PaymentRequest : System.Web.UI.Page
     {
@@ -305,9 +302,6 @@ echo json_encode($output);`
         }
 }`
 ```
-
-</p>
-</details>
 
 ```markdown
 {
