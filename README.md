@@ -29,11 +29,11 @@ stored **very securely in your server**. Any compromise of the salt may lead to 
 `hash_data="SALT|address_line_1|address_line_2|amount|api_key|city|country|currency|description
 |email|hash|mode|name|order_id|phone|return_url|state|udf1|udf2|udf3|udf4|udf5|zip_code"`
 
-2. Change the string value obtained in step 1 to **UPPERCASE**.
+2. Calculate the **hash** of the string value obtained in step 1 using **sha512** algorithm(all 
+major languages would have an in-house function to calculate the hash using SHA-512).
 
-3. Calculate the **hash** of the string value obtained in step 2 using **sha512** algorithm(all 
-major languages would have an in-house function to calculate the hash using SHA-512) and response 
-the hash value to the android app.
+3. Change the hash value obtained in step 2 to **UPPERCASE** and response the hash value to the 
+android app.
 
 ```
 
