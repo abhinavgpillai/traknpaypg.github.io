@@ -9,6 +9,16 @@ This section will guide you in creating a framework for integrating Traknpay Pay
 1. You should be a registered and approved merchant with Traknpay. If not registered, please [register here!](https://biz.traknpay.in/auth/register)
 2. You should have received the SALT and API key from Traknpay.
 
+### Server Side Setup
+
+```markdown
+A hash is an encrypted value (checksum) that must be sent by the merchant in a payment request that is then sent back by PayUmoney in the payment response. A hash is used to protect transactions against “man in the middle” attacks.
+
+Hash Generation for Payment Request
+Use the following sample java sequence to generate a request hash.
+```
+
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
