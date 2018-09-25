@@ -16,11 +16,11 @@ To understand the Traknpay payment flow, you can download our sample app [here](
 
 To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up a API to calculate encrypted value (checksum) known as hash from the payment request parameters and secure SALT key(provided by Traknpay) before sending it to the Traknpay server.
 
-Hash Generation for Payment Request
-Use the following sample java sequence to generate a request hash.
+Hash Generation of Payment Request for different languages has been given below:
 
 ```markdown
 **Java Servlet Code**
+
 `public class PaymentRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
