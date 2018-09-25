@@ -21,7 +21,8 @@ Traknpay server.
 Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the hash, a secure 
 private key known as **SALT key** will be provided by Traknpay that needs to be stored very **securely in your 
 server**. Any compromise of the salt may lead to data tampering. 
-The hash generation code has 3 components:
+
+# The hash generation code has 3 components:
 
 1. Concatenate the request parameters(after trimming the blank spaces) separated by pipeline in the 
 order below:   
