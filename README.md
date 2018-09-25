@@ -1,12 +1,15 @@
 ## Overview
 
-This section will guide you in creating a framework for integrating with Traknpay Payment Gateway. 
+This section will guide you in creating a framework for integrating Traknpay Payment Gateway with your android app. 
 
 ![Overview](https://traknpaypg.github.io/doc/images/overview.png?raw=true)
 
-You can use the [editor on GitHub](https://github.com/traknpaypg/traknpaypg.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Prerequisites
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+```markdown
+1. Register as merchant with Traknpay[here](https://biz.traknpay.in/auth/register).
+2. List
+```
 
 ### Markdown
 
