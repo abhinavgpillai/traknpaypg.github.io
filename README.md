@@ -29,9 +29,9 @@ public class PaymentRequest extends HttpServlet {
 		// TODO Auto-generated method stub
 		String salt = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
 		
-		String [] hash_columns = {"address_line_1", "address_line_2", "amount", "api_key", "city", "country", "currency",
-		"description", "email", "mode", "name", "order_id", "phone", "return_url", "state", "udf1", "udf2", "udf3", "udf4",
-		"udf5", "zip_code"};
+		String [] hash_columns = {"address_line_1", "address_line_2", "amount", "api_key", "city", 
+		"country", "currency","description", "email", "mode", "name", "order_id", "phone", "return_url", 
+		"state", "udf1", "udf2", "udf3", "udf4","udf5", "zip_code"};
 		
 		String hash_data = salt;
 		
