@@ -3,12 +3,11 @@
 <details>
 	<summary>CLICK ME
 	</summary>
-<p>
 
 ```java
 **Java Servlet Sample Code**
 
-public class PaymentRequest extends HttpServlet {
+public class wPaymentRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -71,7 +70,6 @@ public class PaymentRequest extends HttpServlet {
 
 ```
 
-</p>
 </details>
 
 
