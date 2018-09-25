@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
 title: Traknpay Android Payment Integration
 description: Sample Android App with Documentation showcasing the webview integration with Traknpay Payment Gateway.
+parse_block_html: true
