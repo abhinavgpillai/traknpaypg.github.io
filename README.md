@@ -105,7 +105,7 @@ Hash Generation of Payment Request for different languages has been given below:
 
 ```
 
-```markdown
+```php
 **PHP Code**
 
 `try {
