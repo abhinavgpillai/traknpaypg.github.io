@@ -14,14 +14,24 @@ To understand the Traknpay payment flow, you can download our sample app [here](
 
 ### Server Side Setup
 
-To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up a API to calculate encrypted value (checksum) known as hash from the payment request parameters and secure SALT key(provided by Traknpay) before sending it to the Traknpay server.
+To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the 
+Traknpay server.
 
 ```markdown
 Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the hash, a secure 
 private key known as **SALT key** will be provided by Traknpay that needs to be stored very **securely in your 
-server**. Any compromise of the salt may lead to data tampering. Hash Generation of Payment Request for different 
-languages has been given below:
+server**. Any compromise of the salt may lead to data tampering. 
+The hash generation code has 3 components:
+
+1. Concatenate all the request parameters(after trimming the blank spaces) separated by pipeline in the below order:   `hash_data="SALT|address_line_1|address_line_2|amount|api_key|city|country|currency|description|email|hash|mode|name|order_id|phone|return_url|state|udf1|udf2|udf3|udf4|udf5|zip_code"`
+
+2. Change the string value obtained in step 1 to UPPERCASE.
+
+3. Calculate the hash of the string value obtained in step 2 using "sha512" algorithm(all major languages would have an inhouse function to calculate the hash using SHA-512) and response the hash value to the android app.
+
 ```
+
+Hash Generation of Payment Request for different languages has been given below:
 
 ```markdown
 **Java Servlet Code**
