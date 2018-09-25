@@ -39,10 +39,10 @@ the hash value to the android app.
 
 Hash Generation of Payment Request for different languages has been given below:
 
-```markdown
+```java
 **Java Servlet Code**
 
-`public class PaymentRequest extends HttpServlet {
+public class PaymentRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -101,7 +101,7 @@ Hash Generation of Payment Request for different languages has been given below:
 		return hashCodeBuffer.toString().toUpperCase();
 	}
 	
-}`
+}
 
 ```
 
