@@ -149,9 +149,6 @@ Hash Generation of Payment Request for different languages has been given below:
 		}
 	}
 
-
-	/*	error_log($hash_data,3,"/home/vagrant/code/ecaas_error.txt");*/
-
 	$hash = null;
 	if (strlen($hash_data) > 0) {
 		$hash = strtoupper(hash("sha512", $hash_data));
