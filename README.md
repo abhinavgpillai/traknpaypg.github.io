@@ -14,7 +14,7 @@
 
 # Server Side Setup
 
-To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API in your server to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the Traknpay server.
+> To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API in your server to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the Traknpay server.
 
 ```markdown
 Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the 
