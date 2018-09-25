@@ -191,7 +191,7 @@ echo json_encode($output);`
 ```markdown
 **ASP.NET Code**
 
-`public partial class CalculateHash : System.Web.UI.Page
+`public partial class PaymentRequest : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -244,7 +244,7 @@ echo json_encode($output);`
                 hashValue = Generatehash512(hash_string).ToUpper();       
 
 			  
-			    var columns = new Dictionary<string, string>
+	        var columns = new Dictionary<string, string>
                 {
                     { "hash", hashValue},
                     { "status", 0},
@@ -253,13 +253,11 @@ echo json_encode($output);`
                 var jsSerializer = new JavaScriptSerializer();             
                 var jsonString = jsSerializer.Serialize(columns);
 			    
-			    return jsonString;
+	       return jsonString;
 
-            }
-            catch (Exception ex)
-            {
+            }catch (Exception ex){
                 
-		       var columns = new Dictionary<string, string>
+	        var columns = new Dictionary<string, string>
                {
                    { "hash", "INVALID"},
                    { "status", 1},
@@ -268,8 +266,8 @@ echo json_encode($output);`
                var jsSerializer = new JavaScriptSerializer();               
                var jsonString = jsSerializer.Serialize(columns);
 			   
-			   return jsonString;
-            }
+	       return jsonString;
+           }
         }
         
         public string Generatehash512(string text)
