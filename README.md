@@ -108,7 +108,7 @@ Hash Generation of Payment Request for different languages has been given below:
 ```php
 **PHP Code**
 
-`try {
+try {
 	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 
 	$params["api_key"]=$_POST["api_key"];
@@ -184,7 +184,7 @@ Hash Generation of Payment Request for different languages has been given below:
 	$output['responseCode']=$e->getMessage();
 }
 
-echo json_encode($output);`
+echo json_encode($output);
 
 ```
 
