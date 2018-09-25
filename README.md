@@ -7,12 +7,12 @@ This section will guide you in creating a framework for integrating Traknpay Pay
 ## Sample App
 To understand the Traknpay payment flow, you can download our sample app [here](https://github.com/traknpaypg/traknpaypg.github.io).
 
-### Prerequisites
+## Prerequisites
 
 1. You should be a registered and approved merchant with Traknpay. If not registered, please [register here!](https://biz.traknpay.in/auth/register)
 2. You should have received the SALT and API key from Traknpay.
 
-### Server Side Setup
+## Server Side Setup
 
 To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the 
 Traknpay server.
