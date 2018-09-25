@@ -1,93 +1,18 @@
-## collapsible markdown?
-
-<details>
-	<summary>CLICK ME
-	</summary>
-
-```java
-**Java Servlet Sample Code**
-
-public class wPaymentRequest extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-	throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String salt = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
-		
-		String [] hash_columns = {"address_line_1", "address_line_2", "amount", "api_key", 
-		"city", "country", "currency","description", "email", "mode", "name", "order_id", 
-		"phone", "return_url", "state", "udf1", "udf2", "udf3", "udf4","udf5", "zip_code"};
-		
-		String hash_data = salt;
-		
-		for( int i = 0; i < hash_columns.length; i++)
-		{
-			if(request.getParameter(hash_columns[i]).length() > 0 ){
-				hash_data += '|' + request.getParameter(hash_columns[i]).trim();
-			}    
-			
-		}
-		
-		String hash = "";
-		try {
-			 hash = getHashCodeFromString(hash_data);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		JsonObject jsonResponse = new JsonObject();
-                jsonResponse.addProperty("hash", hash);
-             	jsonResponse.addProperty("status", "Kargopolov");
-       		jsonResponse.addProperty("responseCode", "Kargopolov");
-
-
-		response.setContentType("application/json");
-		PrintWriter writer = response.getWriter();
-		writer.print(jsonResponse);
-        	writer.flush();
-
-	}
-	
-	private static String getHashCodeFromString(String str) throws NoSuchAlgorithmException, 
-	UnsupportedEncodingException {
-			
-		MessageDigest md = MessageDigest.getInstance("SHA-512");
-	    	md.update(str.getBytes("UTF-8"));
-	    	byte byteData[] = md.digest();
-
-	    	//convert the byte to hex format method 1
-	    	StringBuffer hashCodeBuffer = new StringBuffer();
-	    	for (int i = 0; i < byteData.length; i++) {
-	            hashCodeBuffer.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16)
-		    .substring(1));
-	    	}
-		return hashCodeBuffer.toString().toUpperCase();
-	}
-	
-}
-
-```
-
-</details>
-
-
-## Overview
+# Overview
 
 > This section will guide you in creating a framework for integrating Traknpay Payment Gateway with your android app. 
 
 ![Overview](https://traknpaypg.github.io/doc/images/overview.png?raw=true)
 
-## Sample App
+# Sample App
 > To understand the Traknpay payment flow, you can download our sample app [here](https://github.com/traknpaypg/traknpaypg.github.io).
 
-## Prerequisites
+# Prerequisites
 
 1. You should be a registered and approved merchant with Traknpay. If not registered, please [register here!](https://biz.traknpay.in/auth/register)
 2. You should have received the SALT and API key from Traknpay.
 
-## Server Side Setup
+# Server Side Setup
 
 To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API in your server to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the Traknpay server.
 
