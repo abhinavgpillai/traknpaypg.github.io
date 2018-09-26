@@ -461,7 +461,8 @@ if(!empty($_POST)){
 			$salt = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
 			if(isset($salt) && !empty($salt)){
 				$response['calculated_hash']=hashCalculate($salt, $response);
-				$response['valid_hash'] = ($response['hash']==$response['calculated_hash'])?'Yes':'No';
+				$response['valid_hash'] = ($response['hash']==$response[
+				        'calculated_hash'])?'Yes':'No';
 			} else {
 				$response['valid_hash']='No Hash Found';
 			}
