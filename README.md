@@ -294,7 +294,7 @@ public partial class PaymentRequest : System.Web.UI.Page
 
 ```javascript
 {
-    'amount': '2.00',
+    "amount": "2.00",
     "email": "test@gmail.com",
     "name": "Test Name",
     "phone": "9876543210",
