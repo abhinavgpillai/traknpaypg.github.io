@@ -589,7 +589,10 @@ function hashCalculate($salt,$input){
 
 ```
 
-| Error Code  |	Error |	Error Description |
+```markdown
+
+
+| Code  | Response Message |	Description |
 | ----- |:-------------:| -------------:|
 | 0 | SUCCESS | Transaction successful |
 | 1000 | FAILED | Transaction failed |
@@ -648,5 +651,5 @@ function hashCalculate($salt,$input){
 | 1053 | INVALID-PHONE | Invalid phone number |
 | 9999 | UNKNOWN-ERROR | Unknown error occurred |
 | 997 |  | These are unhandled errors coming from banks directly, errors coming here will eventually be categorized in one of the above error codes or into a new error code. If you are handling error individually then make sure to have a catch all. |
-
+```
 
