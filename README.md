@@ -2,10 +2,8 @@
 
 > This section will guide you in creating a framework for integrating Traknpay Payment Gateway with your android app. 
 
-======
-
 ![Overview](https://traknpaypg.github.io/doc/images/overview.png?raw=true)
-
+-------------
 # Sample App
 > To understand the Traknpay payment flow, you can download our sample app [here](https://github.com/traknpaypg/traknpaypg.github.io).
 
