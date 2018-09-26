@@ -589,8 +589,6 @@ function hashCalculate($salt,$input){
 
 ```
 
-```markdown
-
 | error numeric code	error code	error description |
 | 0 | SUCCESS | Transaction successful |
 | 1000 | FAILED | Transaction failed |
@@ -623,5 +621,4 @@ function hashCalculate($salt,$input){
 | 1027 | INVALID-TRANSACTION | Invalid transaction |
 | 1028 | TRANSACTION-NOT-FOUND | Transaction not found |
 
-```
 
