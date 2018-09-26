@@ -708,16 +708,44 @@ function hashCalculate($salt,$input){
 | `payment_page_display_text`	   | `This text will be displayed below the logo on payment page.` | `Optional` | `String - Max:200.` |
 | `hash`	   | `Checksum to ensure data integrity during server to server calls.` | `Mandatory` | `String - Max:200.` |
 
-> Post the parameters to the Traknpay Payment URL and intercept the response page to receive the paramters.
+> Post the parameters to the Traknpay Payment URL and intercept the response page with a javascript to receive the parameters.
 
 ```java
+webview.setWebViewClient(new WebViewClient() {
+    @Override
+    public void onPageFinished(WebView view, String url) {
+        pb.setVisibility(View.GONE);
 
-    WebSettings webSettings = webview.getSettings();
-    webSettings.setJavaScriptEnabled(true);
-    webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-    webSettings.setDomStorageEnabled(true);
-    webview.addJavascriptInterface(new MyJavaScriptInterface(), "HtmlViewer");
-    webview.postUrl(SampleAppConstants.PG_HOSTNAME+"/v1/paymentrequest",requestParams
-                                                               .toString().getBytes());
+        if(url.equals(SampleAppConstants.PG_RETURN_URL)){
+            view.setVisibility(View.GONE);
+            view.loadUrl("javascript:HtmlViewer.showHTML" +
+                    "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
+        }
+
+    }
+
+    @Override
+    public void onPageStarted(WebView view, String url, Bitmap facIcon) {
+        pb.setVisibility(View.VISIBLE);
+    }
+
+});
+
+WebSettings webSettings = webview.getSettings();
+webSettings.setJavaScriptEnabled(true);
+webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+webSettings.setDomStorageEnabled(true);
+webview.addJavascriptInterface(new MyJavaScriptInterface(), "HtmlViewer");
+webview.postUrl(SampleAppConstants.PG_HOSTNAME+"/v1/paymentrequest",requestParams.toString().getBytes());
+
+
+class MyJavaScriptInterface {
+        @JavascriptInterface
+        public void showHTML(String html) {
+            Intent intent=new Intent(getBaseContext(), ResponseActivity.class);
+            intent.putExtra("payment_response", Html.fromHtml(html).toString());
+            startActivity(intent);
+        }
+}
 
 ```
