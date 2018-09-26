@@ -633,9 +633,40 @@ function hashCalculate($salt,$input){
 
 > Request parameters List(mandatory and non mandatory fields) that needs to be posted to Traknpay Server:
 
+
 | `PARAMETER NAME` | `DESCRIPTION`                  | `REQUIRED`           | `DATATYPE`  |
-| -------------    |:------------------------------:|:--------------------:|:--------:|
-| `api_key`      | `Traknpay would assign a unique 40-digit merchant key to you. This key is exclusive to your business/login account.If you have multiple login accounts, there will necessarily be one different api_key per login account that is assigned to you.` | `Mandatory` | `varchar(40)` |
+| -----------------|:------------------------------:|:--------------------:|:-----------:|
+| `api_key`        | `Traknpay would assign a unique 40-digit merchant key to you. This key is exclusive to your business/login account.If you have multiple login accounts, there will necessarily be one different api_key per login account that is assigned to you.` | `Mandatory` | `String - Max:40.` |
+| `order_id`	   | `This is your (merchant) reference number. It must be unique for every transaction. We do perform a validation at our end and do not allow duplicate order_ids for the same merchant.` | `Mandatory` | `String - Max:30.` |
+| `mode`	   | `This is the payment mode ("TEST" or "LIVE" are valid values). "LIVE" is the default value when not specified.` | `Optional` | `String - Max:4.` |
+| `amount`	   | `This is the payment amount.` | `Mandatory` | `Decimal - Max Digits Before Decimal:15, Max Digits after Decimal:2.` |
+| `currency`	   | `This is the 3-digit currency code (INR).` | `Mandatory` | `String - Max:3.` |
+| `description`	   | `Brief description of product or service that the customer is being charged for.` | `Mandatory` | `String - Max:200.` |
+| `name`	   | `Name of customer.` | `Mandatory` | `String - Max:200.` |
+| `email`	   | `Customer email address.` | `Mandatory` | `String - Max:200.` |
+| `phone`	   | `Customer phone number.` | `Mandatory` | `String - Max:30.` |
+| `address_line_1`	   | `Customer's address line 1.` | `Optional` | `String - Max:255.` |
+| `address_line_2`	   | `Customer's address line 2.` | `Optional` | `String - Max:255.` |
+| `city`	   | `Customer City.` | `Mandatory` | `String - Max:50.` |
+| `state`	   | `Customer State.` | `Optional` | `String - Max:50.` |
+| `country`	   | `Customer Country.` | `Mandatory` | `String - Max:50.` |
+| `zip_code`	   | `Customer Zipcode.` | `Mandatory` | `String - Max:10.` |
+| `timeout_duration`	   | `Timeout duration (in seconds).` | `Optional` | `Integer - Min:0,Max:1000.` |
+| `udf1`	   | `User defined field 1.` | `Optional` | `String - Max:300.` |
+| `udf2`	   | `User defined field 2.` | `Optional` | `String - Max:300.` |
+| `udf3`	   | `User defined field 3.` | `Optional` | `String - Max:300.` |
+| `udf4`	   | `User defined field 4.` | `Optional` | `String - Max:300.` |
+| `udf5`	   | `User defined field 5.` | `Optional` | `String - Max:300.` |
+| `return_url`	   | `Your return URL where Traknpay will send all the payment response parameters after a transaction.` | `Mandatory` | `String - Max:200.` |
+| `return_url_failure`	   | `Traknpay will send all failed transaction response parameters to this URL if specified, else, it will send the failed response to the "return_url" parameter` | `Optional` | `String - Max:200.` |
+| `return_url_cancel`	   | `Traknpay will send all cancelled transaction response parameters to this URL if specified, else, it will send the cancelled response to the "return_url" parameter.` | `Optional` | `String - Max:200.` |
+| `percent_tdr_by_user`	   | `Percent of tdr amount paid by user.` | `Optional` | `Integer - Min:0,Max:100.` |
+| `flatfee_tdr_by_user`	   | `Fixed fee paid by user.` | `Optional` | `Integer - Min:0,Max:99999999.` |
+| `show_convenience_fee`	   | `Controls whether the convenience fee amount (for surcharge merchants) is displayed to the customer (on the payment page) or not.` | `Optional` | `String - Max:1.` |
+| `split_enforce_strict`	   | `Controls whether payment is required to be split before settlement. By default it is set to ‘n’, If this is set to ‘y’ then settlement will be on HOLD until splitsettlement api is called to provide split information.` | `Optional` | `String - Max:1.` |
+| `payment_options`	   | `payment options to be displayed such credit card(cc), netbanking(nb), wallet(w) and atm card(atm).Tabs will be displayed by order in which values are sent. Values accepted are: cc,nb,w,atm (comma separated string).` | `Optional` | `String - Max:20.` |
+| `payment_page_display_text`	   | `This text will be displayed below the logo on payment page.` | `Optional` | `String - Max:200.` |
+| `hash`	   | `Checksum to ensure data integrity during server to server calls.` | `Mandatory` | `String - Max:200.` |
 
 > Post the parameters to the Traknpay Payment URL and intercept the response page to receive the paramters.
 
