@@ -589,64 +589,64 @@ function hashCalculate($salt,$input){
 
 ```
 
-| Code  | Response Message |  Description  |
+| `Code`  | `Response Message` |  `Description` |
 |:-----:|:-----------------------------------------------|:-------------|
-| 0 | &nbsp;&nbsp;&nbsp;&nbsp;SUCCESS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Transaction successful |
+| `0` | `SUCCESS` | `Transaction successful` |
 | `1000` | `FAILED` | `Transaction failed` |
-| 1001 | INVALID-API-KEY | The api key field is incorrect |
-| 1002 | INVALID-LIVE-MODE-ACCESS | The live mode access is not allowed |
-| 1003 | INVALID-ORDER-ID-FIELD | The order id field should to be unique |
-| 1004 | ORDER-ID-FIELD-NOT-FOUND | The order id field is not found |
-| 1005 | INVALID-AUTHENTICATION | Invalid authentication at bank |
-| 1006 | WAITING-BANK-RESPONSE | Waiting for the response from bank |
-| 1007 | INVALID-INPUT-REQUEST | Invalid input in the request message |
-| 1008 | TRANSACTION-TAMPERED | Transaction tampered |
-| 1009 | DECLINED-BY-BANK | Bank Declined Transaction |
-| 1010 | INVALID-AMOUNT | Amount cannot be less than 1 |
-| 1011 | AUTHORIZATION-REFUSED | Authorization refused |
-| 1012 | INVALID-CARD | Invalid Card/Member Name data |
-| 1013 | INVALID-EXPIRY-DATE | Invalid expiry date |
-| 1014 | DENIED-BY-RISK | Transaction denied by risk |
-| 1015 | INSUFFICIENT-FUND | Insufficient Fund |
-| 1016 | INVALID-AMOUNT-LIMIT | Total Amount limit set for the terminal for transactions has been crossed |
-| 1017 | INVALID-TRANSACTION-LIMIT | Total transaction limit set for the terminal has been crossed |
-| 1018 | INVALID-DEBIT-AMOUNT-LIMIT | Maximum debit amount limit set for the terminal for a day has been crossed |
-| 1019 | INVALID-CREDIT-AMOUNT-LIMIT | Maximum credit amount limit set for the terminal for a day has been crossed |
-| 1020 | MAXIMUM-DEBIT-AMOUNT-CROSS | Maximum debit amount set for per card for rolling 24 hrs has been crossed |
-| 1021 | MAXIMUM-CREDIT-AMOUNT-CROSS | Maximum credit amount set for per card for rolling 24 hrs has been crossed |
-| 1022 | MAXIMUM-TRANSACTION-CROSS | Maximum transaction set for per card for rolling 24 hrs has been crossed |
-| 1023 | HASH-MISMATCH | Hash Mismatch |
-| 1024 | INVALID-PARAMS | Invalid parameters |
-| 1025 | INVALID-BANK-CODE | Invalid bank code |
-| 1026 | INVALID-MERCHANT | Merchant is not active |
-| 1027 | INVALID-TRANSACTION | Invalid transaction |
-| 1028 | TRANSACTION-NOT-FOUND | Transaction not found |
-| 1029 | TRANSACTION-TERMINATED | Transaction terminated |
-| 1030 | TRANSACTION-INCOMPLETE | Transaction incomplete |
-| 1031 | AUTO-REFUNDED | Transaction auto refunded |
-| 1032 | REFUNDED | Transaction refunded |
-| 1033 | SINGLE-TRANSACTION-LOWER-LIMIT-CROSS | The amount provided is less than transaction lower limit |
-| 1034 | SINGLE-TRANSACTION-UPPER-LIMIT-CROSS | The amount provided is more than transaction upper limit |
-| 1035 | TRANSACTION-DAILY-LIMIT-CROSS | The daily transaction limit is exceeded for the merchant |
-| 1036 | TRANSACTION-MONTHLY-LIMIT-CROSS | The monthly transaction limit is exceeded for the merchant |
-| 1037 | DAILY-TRANSACTION-NUMBER-CROSS | The daily transaction number is exceeded for the merchant |
-| 1038 | MONTHLY-TRANSACTION-NUMBER-CROSS | The monthly transaction number is exceeded for the merchant |
-| 1039 | INVALID-REFUND-AMOUNT | The refund amount is greater than transaction amount |
-| 1040 | INVALID-CVV | Invalid Card Verification Code |
-| 1041 | AUTO-REFUNDED-TNP | Transaction is auto refunded by TnP |
-| 1042 | FAILED-NO-RESPONSE | Transaction failed as there was no response from bank |
-| 1043 | TRANSACTION-CANCELLED | Transaction cancelled |
-| 1044 | UNAUTHORIZED | Unauthorized |
-| 1045 | FORBIDDEN | Forbidden Access |
-| 1046 | TRANSACTION-ALREADY-CAPTURED | Transaction already captured |
-| 1047 | AUTHORIZED | Transaction authorized |
-| 1048 | CAPTURED | Transaction captured |
-| 1049 | VOIDED | Transaction voided |
-| 1050 | NO-RECORD-FOUND | No data record found for the given input |
-| 1051 | ACQUIRER-ERROR | Error occurred at the bank end |
-| 1052 | INVALID-EMAIL | Invalid Email ID |
-| 1053 | INVALID-PHONE | Invalid phone number |
-| 9999 | UNKNOWN-ERROR | Unknown error occurred |
-| 997 |  | These are unhandled errors coming from banks directly, errors coming here will eventually be categorized in one of the above error codes or into a new error code. If you are handling error individually then make sure to have a catch all. |
+| `1001` | `INVALID-API-KEY` | `The api key field is incorrect` |
+| `1002` | `INVALID-LIVE-MODE-ACCESS` | `The live mode access is not allowed` |
+| `1003` | `INVALID-ORDER-ID-FIELD` | `The order id field should to be unique` |
+| `1004` | `ORDER-ID-FIELD-NOT-FOUND` | `The order id field is not found` |
+| `1005` | `INVALID-AUTHENTICATION` | `Invalid authentication at bank` |
+| `1006` | `WAITING-BANK-RESPONSE` | `Waiting for the response from bank` |
+| `1007` | `INVALID-INPUT-REQUEST` | `Invalid input in the request message` |
+| `1008` | `TRANSACTION-TAMPERED` | `Transaction tampered` |
+| `1009` | `DECLINED-BY-BANK` | `Bank Declined Transaction` |
+| `1010` | `INVALID-AMOUNT` | `Amount cannot be less than 1` |
+| `1011` | `AUTHORIZATION-REFUSED` | `Authorization refused` |
+| `1012` | `INVALID-CARD` | `Invalid Card/Member Name data` |
+| `1013` | `INVALID-EXPIRY-DATE` | `Invalid expiry date` |
+| `1014` | `DENIED-BY-RISK` | `Transaction denied by risk` |
+| `1015` | `INSUFFICIENT-FUND` | `Insufficient Fund` |
+| `1016` | `INVALID-AMOUNT-LIMIT` | `Total Amount limit set for the terminal for transactions has been crossed` |
+| `1017` | `INVALID-TRANSACTION-LIMIT` | `Total transaction limit set for the terminal has been crossed` |
+| `1018` | `INVALID-DEBIT-AMOUNT-LIMIT` | `Maximum debit amount limit set for the terminal for a day has been crossed` |
+| `1019` | `INVALID-CREDIT-AMOUNT-LIMIT` | `Maximum credit amount limit set for the terminal for a day has been crossed` |
+| `1020` | `MAXIMUM-DEBIT-AMOUNT-CROSS` | `Maximum debit amount set for per card for rolling 24 hrs has been crossed` |
+| `1021` | `MAXIMUM-CREDIT-AMOUNT-CROSS` | `Maximum credit amount set for per card for rolling 24 hrs has been crossed` |
+| `1022` | `MAXIMUM-TRANSACTION-CROSS` | `Maximum transaction set for per card for rolling 24 hrs has been crossed` |
+| `1023` | `HASH-MISMATCH` | `Hash Mismatch` |
+| `1024` | `INVALID-PARAMS` | `Invalid parameters` |
+| `1025` | `INVALID-BANK-CODE` | `Invalid bank code` |
+| `1026` | `INVALID-MERCHANT` | `Merchant is not active` |
+| `1027` | `INVALID-TRANSACTION` | `Invalid transaction` |
+| `1028` | `TRANSACTION-NOT-FOUND` | `Transaction not found` |
+| `1029` | `TRANSACTION-TERMINATED` | `Transaction terminated` |
+| `1030` | `TRANSACTION-INCOMPLETE` | `Transaction incomplete` |
+| `1031` | `AUTO-REFUNDED` | `Transaction auto refunded` |
+| `1032` | `REFUNDED` | `Transaction refunded` |
+| `1033` | `SINGLE-TRANSACTION-LOWER-LIMIT-CROSS` | `The amount provided is less than transaction lower limit` |
+| `1034` | `SINGLE-TRANSACTION-UPPER-LIMIT-CROSS` | `The amount provided is more than transaction upper limit` |
+| `1035` | `TRANSACTION-DAILY-LIMIT-CROSS` | `The daily transaction limit is exceeded for the merchant` |
+| `1036` | `TRANSACTION-MONTHLY-LIMIT-CROSS` | `The monthly transaction limit is exceeded for the merchant` |
+| `1037` | `DAILY-TRANSACTION-NUMBER-CROSS` | `The daily transaction number is exceeded for the merchant` |
+| `1038` | `MONTHLY-TRANSACTION-NUMBER-CROSS` | `The monthly transaction number is exceeded for the merchant` |
+| `1039` | `INVALID-REFUND-AMOUNT` | `The refund amount is greater than transaction amount` |
+| `1040` | `INVALID-CVV` | `Invalid Card Verification Code` |
+| `1041` | `AUTO-REFUNDED-TNP` | `Transaction is auto refunded by TnP` |
+| `1042` | `FAILED-NO-RESPONSE` | `Transaction failed as there was no response from bank` |
+| `1043` | `TRANSACTION-CANCELLED` | `Transaction cancelled` |
+| `1044` | `UNAUTHORIZED` | `Unauthorized` |
+| `1045` | `FORBIDDEN` | `Forbidden Access` |
+| `1046` | `TRANSACTION-ALREADY-CAPTURED` | `Transaction already captured` |
+| `1047` | `AUTHORIZED` | `Transaction authorized` |
+| `1048` | `CAPTURED` | `Transaction captured` |
+| `1049` | `VOIDED` | `Transaction voided` |
+| `1050` | `NO-RECORD-FOUND` | `No data record found for the given input` |
+| `1051` | `ACQUIRER-ERROR` | `Error occurred at the bank end` |
+| `1052` | `INVALID-EMAIL` | `Invalid Email ID` |
+| `1053` | `INVALID-PHONE` | `Invalid phone number` |
+| `9999` | `UNKNOWN-ERROR` | `Unknown error occurred` |
+| `997` | `` | `These are unhandled errors coming from banks directly. |
 
 
