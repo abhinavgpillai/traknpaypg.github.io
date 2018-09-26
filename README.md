@@ -1,4 +1,3 @@
--------------
 # Overview
 
 > This section will guide you in creating a framework for integrating Traknpay Payment Gateway with your android app. 
@@ -8,11 +7,13 @@
 
 # Sample App
 > To understand the Traknpay payment flow, you can download our sample app [here](https://github.com/traknpaypg/traknpaypg.github.io).
+-------------
 
 # Prerequisites
 
 1. You should be a registered and approved merchant with Traknpay. If not registered, please [register here!](https://biz.traknpay.in/auth/register)
 2. You should have received the SALT and API key from Traknpay.
+-------------
 
 # Server Side Setup
 
@@ -106,6 +107,7 @@ public class PaymentRequest extends HttpServlet {
 }
 
 ```
+-------------
 
 ```php
 **PHP Sample Code**
@@ -189,6 +191,7 @@ try {
 echo json_encode($output);
 
 ```
+-------------
 
 ```csharp
 **ASP.NET Sample Code**
@@ -291,6 +294,7 @@ public partial class PaymentRequest : System.Web.UI.Page
         }
 }
 ```
+-------------
 
 > Request to your server's Payment Request API would look like below:
 
@@ -320,6 +324,7 @@ public partial class PaymentRequest : System.Web.UI.Page
 }
 
 ```
+-------------
 
 > b. Your server should be ready to receive the payment parameters. This means you must have a API in your server that receives the response from Traknpay on payment completion. 
 
@@ -530,6 +535,7 @@ function hashCalculate($salt,$input){
 }
 
 ```
+-------------
     
 # Webview Sample Code
 
