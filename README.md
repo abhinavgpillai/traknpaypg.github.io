@@ -591,9 +591,8 @@ function hashCalculate($salt,$input){
 
 ```markdown
 
-
-| Code  | Response Message |	Description |
-| ----- |:-------------:| -------------:|
+| Code  | Response Message |  Description  |
+| ----- |------------------| --------------|
 | 0 | SUCCESS | Transaction successful |
 | 1000 | FAILED | Transaction failed |
 | 1001 | INVALID-API-KEY | The api key field is incorrect |
@@ -651,5 +650,6 @@ function hashCalculate($salt,$input){
 | 1053 | INVALID-PHONE | Invalid phone number |
 | 9999 | UNKNOWN-ERROR | Unknown error occurred |
 | 997 |  | These are unhandled errors coming from banks directly, errors coming here will eventually be categorized in one of the above error codes or into a new error code. If you are handling error individually then make sure to have a catch all. |
+
 ```
 
