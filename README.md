@@ -348,6 +348,8 @@ the response fields that you need in a json format.
 
 At the very least, you should reverify the amount and order id field on your payment response 
 API with the actual values of the amount and order id during payment initiation in your android app.
+ 
+```
 
 > Response Parameters List send by Traknpay server to your return url:
 
@@ -380,8 +382,7 @@ API with the actual values of the amount and order id during payment initiation 
 | `udf5`	   | `The same value that was originally sent by merchant.` |
 | `cardmasked`	   | `Masked card number which was used to make the transaction. For example, 437748******0069 Note: This parameter will be returned as part of the response only if the merchant’s account has been enabled for the same. Please speak to your Traknpay relationship manager if you would like this information to be returned to you.` |
 | `hash`	   | `The hash code calculated from Trankpay server that you must use it to verify for ensuring data integrity between traknpay server and your server.` |
- 
-```
+
 
 > Sample response API code for ASP.NET and PHP is given below for reference:
 
