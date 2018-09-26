@@ -589,8 +589,8 @@ function hashCalculate($salt,$input){
 
 ```
 
-| Error Numeric Code  |	Error Code  |	Error Description |
-| ------------- |:-------------:| -----:|
+| Error Code  |	Error |	Error Description |
+| ----- |:-------------:| -------------:|
 | 0 | SUCCESS | Transaction successful |
 | 1000 | FAILED | Transaction failed |
 | 1001 | INVALID-API-KEY | The api key field is incorrect |
