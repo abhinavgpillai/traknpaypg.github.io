@@ -589,7 +589,7 @@ function hashCalculate($salt,$input){
 
 ```
 
-| Code  |                   Response Message                          |  Description  |
+| Code  |&nbsp;&nbsp;&nbsp;&nbsp;Response Message &nbsp;&nbsp;&nbsp;&nbsp;|  Description  |
 |:-----:|-----------------------------------------------|:-------------|
 | 0 | SUCCESS | Transaction successful |
 | 1000 | FAILED | Transaction failed |
