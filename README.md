@@ -647,6 +647,6 @@ function hashCalculate($salt,$input){
 | `1052` | `INVALID-EMAIL` | `Invalid Email ID` |
 | `1053` | `INVALID-PHONE` | `Invalid phone number` |
 | `9999` | `UNKNOWN-ERROR` | `Unknown error occurred` |
-| `997` | `` | `These are unhandled errors coming from banks directly.` |
+| `997` | `` | `These are unhandled errors coming from banks directly, errors coming here will eventually be categorized in one of the above error codes or into a new error code. If you are handling error individually then make sure to have a catch all.` |
 
 
