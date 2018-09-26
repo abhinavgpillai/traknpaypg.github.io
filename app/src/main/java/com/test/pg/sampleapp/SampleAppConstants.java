@@ -19,6 +19,4 @@ public class SampleAppConstants {
     //PG_COUNTRY is given by the Payment Gateway. Only "IND" Allowed.
     public static final String PG_COUNTRY = "IND";
 
-    public static final String HASH = "<CALCULATED_HASH>";
-
 }

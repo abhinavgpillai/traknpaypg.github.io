@@ -22,16 +22,10 @@ public class ResponseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(com.test.pg.sampleapp.R.layout.activity_response);
 
-
-        long millis = System.currentTimeMillis();
-        long seconds = millis / 1000;
-        Log.i("ResponseActivity:", "onCreate: " + seconds);
-
         ProgressBar pb;
         pb = findViewById(R.id.progressBarResponse);
         pb.setVisibility(View.VISIBLE);
 
-        Toast.makeText(this, "ResponseActivity",Toast.LENGTH_SHORT).show();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 

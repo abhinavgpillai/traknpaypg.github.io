@@ -1,12 +1,10 @@
 package com.test.pg.sampleapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -31,29 +29,32 @@ public class PaymentActivity extends AppCompatActivity {
         pb = findViewById(R.id.progressBar);
         pb.setVisibility(View.VISIBLE);
 
+        //Before initiating payment, you should calculate the hash for the payment request parameters.
+        //Please refer to the integration documentation for more details.
+
         try{
-            StringBuffer urlWithParams=new StringBuffer("api_key="+URLDecoder.decode(SampleAppConstants.PG_API_KEY, "UTF-8"));
-            urlWithParams.append("&amount="+URLDecoder.decode("2.00", "UTF-8"));
-            urlWithParams.append("&email="+URLDecoder.decode("test@gmail.com", "UTF-8"));
-            urlWithParams.append("&name="+URLDecoder.decode("Test Name", "UTF-8"));
-            urlWithParams.append("&phone="+URLDecoder.decode("9876543210", "UTF-8"));
-            urlWithParams.append("&order_id="+URLDecoder.decode("12", "UTF-8"));
-            urlWithParams.append("&currency="+URLDecoder.decode(SampleAppConstants.PG_CURRENCY, "UTF-8"));
-            urlWithParams.append("&description="+URLDecoder.decode("test", "UTF-8"));
-            urlWithParams.append("&city="+URLDecoder.decode("city", "UTF-8"));
-            urlWithParams.append("&state="+URLDecoder.decode("state", "UTF-8"));
-            urlWithParams.append("&address_line_1="+URLDecoder.decode("addl1", "UTF-8"));
-            urlWithParams.append("&address_line_2="+URLDecoder.decode("addl2", "UTF-8"));
-            urlWithParams.append("&zip_code="+URLDecoder.decode("123456", "UTF-8"));
-            urlWithParams.append("&country="+URLDecoder.decode(SampleAppConstants.PG_COUNTRY, "UTF-8"));
-            urlWithParams.append("&return_url="+URLDecoder.decode(SampleAppConstants.PG_RETURN_URL, "UTF-8"));
-            urlWithParams.append("&mode="+URLDecoder.decode(SampleAppConstants.PG_MODE, "UTF-8"));
-            urlWithParams.append("&udf1="+URLDecoder.decode("udf1", "UTF-8"));
-            urlWithParams.append("&udf2="+URLDecoder.decode("udf2", "UTF-8"));
-            urlWithParams.append("&udf3="+URLDecoder.decode("udf3", "UTF-8"));
-            urlWithParams.append("&udf4="+URLDecoder.decode("udf4", "UTF-8"));
-            urlWithParams.append("&udf5="+URLDecoder.decode("udf5", "UTF-8"));
-            urlWithParams.append("&hash="+URLDecoder.decode(SampleAppConstants.HASH, "UTF-8"));
+            StringBuffer requestParams=new StringBuffer("api_key="+URLDecoder.decode(SampleAppConstants.PG_API_KEY, "UTF-8"));
+            requestParams.append("&amount="+URLDecoder.decode("2.00", "UTF-8"));
+            requestParams.append("&email="+URLDecoder.decode("test@gmail.com", "UTF-8"));
+            requestParams.append("&name="+URLDecoder.decode("Test Name", "UTF-8"));
+            requestParams.append("&phone="+URLDecoder.decode("9876543210", "UTF-8"));
+            requestParams.append("&order_id="+URLDecoder.decode("12", "UTF-8"));
+            requestParams.append("&currency="+URLDecoder.decode(SampleAppConstants.PG_CURRENCY, "UTF-8"));
+            requestParams.append("&description="+URLDecoder.decode("test", "UTF-8"));
+            requestParams.append("&city="+URLDecoder.decode("city", "UTF-8"));
+            requestParams.append("&state="+URLDecoder.decode("state", "UTF-8"));
+            requestParams.append("&address_line_1="+URLDecoder.decode("addl1", "UTF-8"));
+            requestParams.append("&address_line_2="+URLDecoder.decode("addl2", "UTF-8"));
+            requestParams.append("&zip_code="+URLDecoder.decode("123456", "UTF-8"));
+            requestParams.append("&country="+URLDecoder.decode(SampleAppConstants.PG_COUNTRY, "UTF-8"));
+            requestParams.append("&return_url="+URLDecoder.decode(SampleAppConstants.PG_RETURN_URL, "UTF-8"));
+            requestParams.append("&mode="+URLDecoder.decode(SampleAppConstants.PG_MODE, "UTF-8"));
+            requestParams.append("&udf1="+URLDecoder.decode("udf1", "UTF-8"));
+            requestParams.append("&udf2="+URLDecoder.decode("udf2", "UTF-8"));
+            requestParams.append("&udf3="+URLDecoder.decode("udf3", "UTF-8"));
+            requestParams.append("&udf4="+URLDecoder.decode("udf4", "UTF-8"));
+            requestParams.append("&udf5="+URLDecoder.decode("udf5", "UTF-8"));
+            requestParams.append("&hash="+URLDecoder.decode("<put_your_calculated_hash_here>", "UTF-8"));
 
 
             webview.setWebViewClient(new WebViewClient() {
@@ -65,10 +66,6 @@ public class PaymentActivity extends AppCompatActivity {
                         view.setVisibility(View.GONE);
                         view.loadUrl("javascript:HtmlViewer.showHTML" +
                                 "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
-
-                        long millis = System.currentTimeMillis();
-                        long seconds = millis / 1000;
-                        Log.i("PaymentActivity:", "onPageFinished : " + seconds);
                     }
 
                 }
@@ -76,9 +73,6 @@ public class PaymentActivity extends AppCompatActivity {
                 @Override
                 public void onPageStarted(WebView view, String url, Bitmap facIcon) {
                     pb.setVisibility(View.VISIBLE);
-                    long millis = System.currentTimeMillis();
-                    long seconds = millis / 1000;
-                    Log.i("PaymentActivity:", "onPageStarted : " + seconds);
                 }
 
             });
@@ -87,8 +81,8 @@ public class PaymentActivity extends AppCompatActivity {
             webSettings.setJavaScriptEnabled(true);
             webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
             webSettings.setDomStorageEnabled(true);
-            webview.addJavascriptInterface(new MyJavaScriptInterface(this), "HtmlViewer");
-            webview.postUrl(SampleAppConstants.PG_HOSTNAME+"/v1/paymentrequest",urlWithParams.toString().getBytes());
+            webview.addJavascriptInterface(new MyJavaScriptInterface(), "HtmlViewer");
+            webview.postUrl(SampleAppConstants.PG_HOSTNAME+"/v1/paymentrequest",requestParams.toString().getBytes());
 
         }catch (Exception e){
             StringWriter sw = new StringWriter();
@@ -101,23 +95,11 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     class MyJavaScriptInterface {
-
-        private Context ctx;
-        MyJavaScriptInterface(Context ctx) {
-            this.ctx = ctx;
-        }
-
         @JavascriptInterface
         public void showHTML(String html) {
-
-            long millis = System.currentTimeMillis();
-            long seconds = millis / 1000;
-            Log.i("Payment Acitiviy:", "showHTML Started : " + seconds);
-
             Intent intent=new Intent(getBaseContext(), ResponseActivity.class);
             intent.putExtra("payment_response", Html.fromHtml(html).toString());
             startActivity(intent);
-
         }
 
     }
