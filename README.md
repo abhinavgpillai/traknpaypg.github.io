@@ -346,7 +346,7 @@ public partial class PaymentRequest : System.Web.UI.Page
     requestParams.append("&udf3="+URLDecoder.decode("udf3", "UTF-8"));
     requestParams.append("&udf4="+URLDecoder.decode("udf4", "UTF-8"));
     requestParams.append("&udf5="+URLDecoder.decode("udf5", "UTF-8"));
-    requestParams.append("&hash="+URLDecoder.decode(SampleAppConstants.HASH, "UTF-8"));  
+    requestParams.append("&hash="+URLDecoder.decode("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UTF-8"));  
 
            
 ```
