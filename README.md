@@ -381,7 +381,6 @@ namespace ResponseHandler_ASP_NET
                     }
                 }
                 hash = Generatehash512(hash_string).ToUpper();       
-               // Response.Write(Request.Form);
                 string b = Request.Form["hash"];
                 if (Request.Form["hash"] == hash)
                 {
@@ -427,11 +426,7 @@ namespace ResponseHandler_ASP_NET
 
             }
         }
-        /// <summary>
-        /// Generate HASH for encrypt all parameter passing while transaction
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
+       
         public string Generatehash512(string text)
         {
 
@@ -585,3 +580,10 @@ function hashCalculate($salt,$input){
     webview.postUrl(SampleAppConstants.PG_HOSTNAME+"/v1/paymentrequest",requestParams.toString().getBytes());
 
 ```
+
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
