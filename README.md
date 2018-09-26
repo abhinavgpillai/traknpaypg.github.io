@@ -15,6 +15,7 @@
 
 1. You should be a registered and approved merchant with Traknpay. If not registered, please [register here!](https://biz.traknpay.in/auth/register)
 2. You should have received the SALT and API key from Traknpay.
+3. You should have received the HOSTNAME for the Traknpay payment request URL.
 
 -------------
 
