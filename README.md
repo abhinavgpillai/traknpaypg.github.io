@@ -589,10 +589,10 @@ function hashCalculate($salt,$input){
 
 ```
 
-| Code  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response Message&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|  Description  |
-|:-----:|-----------------------------------------------|:-------------|
+| Code  | Response Message |  Description  |
+|:-----:|:-----------------------------------------------|:-------------|
 | 0 | &nbsp;&nbsp;&nbsp;&nbsp;SUCCESS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Transaction successful |
-| 1000 | FAILED | Transaction failed |
+| `1000` | `FAILED` | `Transaction failed` |
 | 1001 | INVALID-API-KEY | The api key field is incorrect |
 | 1002 | INVALID-LIVE-MODE-ACCESS | The live mode access is not allowed |
 | 1003 | INVALID-ORDER-ID-FIELD | The order id field should to be unique |
