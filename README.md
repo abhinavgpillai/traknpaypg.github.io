@@ -760,4 +760,4 @@ class MyJavaScriptInterface {
 
 # Contact Us
 
-> For any issues regarding the code, please write in to: abhinav.pillai@omniware.in
+> For any issues regarding the code, please write in to: ![Abhinav Pillai](abhinav.pillai@omniware.in)
