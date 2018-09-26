@@ -43,6 +43,13 @@ android app.
 
 ```
 
+```markdown
+# Traknpay Recommendation:
+
+You must securly store the SALT key in your server. Compromise of the same would lead to attacks.
+
+```
+
 > Sample Hash Generation of Payment Request for different languages has been given below:
 
 ```java
