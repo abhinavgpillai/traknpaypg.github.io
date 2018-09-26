@@ -631,7 +631,7 @@ function hashCalculate($salt,$input){
            
 ```
 
-> Request parameters List(mandatory and non mandatory fields) that needs to be posted to Traknpay Server:
+> Request parameters List(mandatory and non mandatory fields) that needs to be posted to Traknpay Server during paymnt initiation:
 
 
 | `PARAMETER NAME` | `DESCRIPTION`                  | `REQUIRED`           | `DATATYPE`  |
