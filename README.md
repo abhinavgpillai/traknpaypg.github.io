@@ -568,6 +568,14 @@ function hashCalculate($salt,$input){
            
 ```
 
+> Request parameters that needs to be posted to Traknpay Server:
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 > Post the parameters to the Traknpay Payment URL and intercept the response page to receive the paramters.
 
 ```java
@@ -581,9 +589,39 @@ function hashCalculate($salt,$input){
 
 ```
 
+```markdown
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| error numeric code	error code	error description |
+| 0 | SUCCESS | Transaction successful |
+| 1000 | FAILED | Transaction failed |
+| 1001 | INVALID-API-KEY | The api key field is incorrect |
+| 1002 | INVALID-LIVE-MODE-ACCESS | The live mode access is not allowed |
+| 1003 | INVALID-ORDER-ID-FIELD | The order id field should to be unique |
+| 1004 | ORDER-ID-FIELD-NOT-FOUND | The order id field is not found |
+| 1005 | INVALID-AUTHENTICATION | Invalid authentication at bank |
+| 1006 | WAITING-BANK-RESPONSE | Waiting for the response from bank |
+| 1007 | INVALID-INPUT-REQUEST | Invalid input in the request message |
+| 1008 | TRANSACTION-TAMPERED | Transaction tampered |
+| 1009 | DECLINED-BY-BANK | Bank Declined Transaction |
+| 1010 | INVALID-AMOUNT | Amount cannot be less than 1 |
+| 1011 | AUTHORIZATION-REFUSED | Authorization refused |
+| 1012 | INVALID-CARD | Invalid Card/Member Name data |
+| 1013 | INVALID-EXPIRY-DATE | Invalid expiry date |
+| 1014 | DENIED-BY-RISK | Transaction denied by risk |
+| 1015 | INSUFFICIENT-FUND | Insufficient Fund |
+| 1016 | INVALID-AMOUNT-LIMIT | Total Amount limit set for the terminal for transactions has been crossed |
+| 1017 | INVALID-TRANSACTION-LIMIT | Total transaction limit set for the terminal has been crossed |
+| 1018 | INVALID-DEBIT-AMOUNT-LIMIT | Maximum debit amount limit set for the terminal for a day has been crossed |
+| 1019 | INVALID-CREDIT-AMOUNT-LIMIT | Maximum credit amount limit set for the terminal for a day has been crossed |
+| 1020 | MAXIMUM-DEBIT-AMOUNT-CROSS | Maximum debit amount set for per card for rolling 24 hrs has been crossed |
+| 1021 | MAXIMUM-CREDIT-AMOUNT-CROSS | Maximum credit amount set for per card for rolling 24 hrs has been crossed |
+| 1022 | MAXIMUM-TRANSACTION-CROSS | Maximum transaction set for per card for rolling 24 hrs has been crossed |
+| 1023 | HASH-MISMATCH | Hash Mismatch |
+| 1024 | INVALID-PARAMS | Invalid parameters |
+| 1025 | INVALID-BANK-CODE | Invalid bank code |
+| 1026 | INVALID-MERCHANT | Merchant is not active |
+| 1027 | INVALID-TRANSACTION | Invalid transaction |
+| 1028 | TRANSACTION-NOT-FOUND | Transaction not found |
+
+```
+
