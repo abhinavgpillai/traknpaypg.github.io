@@ -536,7 +536,7 @@ function hashCalculate($salt,$input){
 
 ```
 
-> Response code and descriptions:
+> Response Codes with Descriptions:
 
 | `Code`  | `Response Message` |  `Description` |
 |:-----:|:-----------------------------------------------|:-------------|
