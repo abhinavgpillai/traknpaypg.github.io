@@ -380,14 +380,15 @@ namespace ResponseHandler_ASP_NET
                         hash_string = hash_string + Request.Form[hash_var];
                     }
                 }
-                hash = Generatehash512(hash_string).ToUpper();         //generating hash
+                hash = Generatehash512(hash_string).ToUpper();       
                // Response.Write(Request.Form);
                 string b = Request.Form["hash"];
                 if (Request.Form["hash"] == hash)
                 {
                     if (Request.Form["response_code"] == "0")
                     {
-                        Dictionary<string, string> data = new Dictionary<string, string> ();
+                        Dictionary<string, string> data = new Dictionary<string, 
+			                                               string>();
 
 				        foreach(string item  in keys)
 				        {
@@ -407,7 +408,8 @@ namespace ResponseHandler_ASP_NET
                         string response_message = Request.Form["response_message"];
                         int startIndex=response_message.IndexOf(" - ")+2;
                         int length = response_message.Length - startIndex;
-                        response_message = response_message.Substring(startIndex, length);
+                        response_message = response_message.Substring(startIndex, 
+			 						    length);
                         Response.Write("Correct the below error <br />");
                         Response.Write(response_message);
                     }
