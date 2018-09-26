@@ -393,7 +393,8 @@ namespace ResponseHandler_ASP_NET
 				        {
 				        	data[item] = Request.Form[item];
 				        }
-				        string json = Newtonsoft.Json.JsonConvert.SerializeObject(data, 				
+				        string json = Newtonsoft.Json.JsonConvert.
+					          SerializeObject(data, 				
 					          Newtonsoft.Json.Formatting.Indented);
 				        Response.Write(json);
                     }
