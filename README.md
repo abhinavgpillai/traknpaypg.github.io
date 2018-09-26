@@ -633,11 +633,10 @@ function hashCalculate($salt,$input){
 
 > Request parameters that needs to be posted to Traknpay Server:
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| `PARAMETER NAME` | `DESCRIPTION`                  | `REQUIRED`           | `DATATYPE`  |
+| -------------    |:------------------------------:|:--------------------:|:--------:|
+| `api_key`      | `Traknpay would assign a unique 40-digit merchant key to you. This key is exclusive to your business/login account. If you have multiple login accounts, there will necessarily be one different api_key per
+login account that is assigned to you.` | `Mandatory` | `varchar(40)` |
 
 > Post the parameters to the Traknpay Payment URL and intercept the response page to receive the paramters.
 
