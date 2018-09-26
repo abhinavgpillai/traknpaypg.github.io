@@ -349,6 +349,37 @@ the response fields that you need in a json format.
 At the very least, you should reverify the amount and order id field on your payment response 
 API with the actual values of the amount and order id during payment initiation in your android app.
 
+> Response Parameters List send by Traknpay server to your return url:
+
+| `PARAMETER NAME` | `DESCRIPTION`                  |
+| -----------------|:------------------------------:|
+| `transaction_id`	   | `A unique ID that can be used to trace the transaction uniquely within Traknpay. Transaction IDs are alphanumeric. An example transaction ID is HDVISC1299876438` |
+| `payment_mode`	   | `This tells the payment mode used by customer - example: "credit card", "debitcard", "netbanking", etc.` |
+| `payment_channel`	   | `This tells the payment channel used by customer - example: "Visa", "HDFC Bank", "Paytm", etc.` |
+| `payment_datetime`   | `Date and Time of this payment in "YYYY-MM-DD HH:MM:SS" format.` |
+| `response_code`	   | `Status of the transaction (return code). All status codes given below` |
+| `response_message`	   | `The response message associated with the transaction.` |
+| `error_desc`	   | `The detailed error description, if any.` |
+| `order_id`	   | `The same order_id that was originally posted by the merchant in the request.` |
+| `amount`	   | `The same original amount that was sent by the merchant in the transactionrequest.` |
+| `currency`	   | `This is the 3digit currency code (INR), it will be same value that was originally sent by merchant.` |
+| `description`	   | `The same description that was originally sent by the merchant in the transaction request.` |
+| `name`	   | `The same value that was originally sent by merchant.` |
+| `email`	   | `The same value that was originally sent by merchant.` |
+| `phone`	   | `The same value that was originally sent by merchant.` |
+| `address_line_1`	   | `The same value that was originally sent by merchant.` |
+| `address_line_2`	   | `The same value that was originally sent by merchant.` |
+| `city`	   | `The same value that was originally sent by merchant.` |
+| `state`	   | `The same value that was originally sent by merchant.` |
+| `country`	   | `The same value that was originally sent by merchant.` |
+| `zip_code`	   | `The same value that was originally sent by merchant.` |
+| `udf1`	   | `The same value that was originally sent by merchant.` |
+| `udf2`	   | `The same value that was originally sent by merchant.` |
+| `udf3`	   | `The same value that was originally sent by merchant.` |
+| `udf4`	   | `The same value that was originally sent by merchant.` |
+| `udf5`	   | `The same value that was originally sent by merchant.` |
+| `cardmasked`	   | `Masked card number which was used to make the transaction. For example, 437748******0069 Note: This parameter will be returned as part of the response only if the merchant’s account has been enabled for the same. Please speak to your Traknpay relationship manager if you would like this information to be returned to you.` |
+| `hash`	   | `The hash code calculated from Trankpay server that you must use it to verify for ensuring data integrity between traknpay server and your server.` |
  
 ```
 
