@@ -82,7 +82,7 @@ public class PaymentActivity extends AppCompatActivity {
             webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
             webSettings.setDomStorageEnabled(true);
             webview.addJavascriptInterface(new MyJavaScriptInterface(), "HtmlViewer");
-            webview.postUrl(SampleAppConstants.PG_HOSTNAME+"/v1/paymentrequest",requestParams.toString().getBytes());
+            webview.postUrl(SampleAppConstants.PG_HOSTNAME+"/v2/paymentrequest",requestParams.toString().getBytes());
 
         }catch (Exception e){
             StringWriter sw = new StringWriter();
