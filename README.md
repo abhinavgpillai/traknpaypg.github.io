@@ -14,7 +14,7 @@
 
 # Server Side Setup
 
-> To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API in your server to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the Traknpay server.
+> a. To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API in your server to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the Traknpay server.
 
 ```markdown
 Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the 
@@ -319,9 +319,122 @@ public partial class PaymentRequest : System.Web.UI.Page
 
 ```
 
+> b. Your server should be ready to receive the payment parameters. This means you must have a API in your server that receives the response from Traknpay on payment completion. 
+
+```markdown
+
+# Response code have the below 2 components:
+
+1. Your response must have the code to extract the hash from the Traknpay payment response and verify the hash to ensure no data tampering existed between Traknpay server and your server. You must again use SHA-512 algorithm to verify the hash.
+
+2. If you are using the webview code given in the following section, then you must response the response fields that you need in a json format. 
+
+# Traknpay Recommendations:
+
+At the very least, you should reverify the amount and order id field on your payment response API with the actual values of the amount and order id during payment initiation in your android app.
+
+ 
+```
+
+> Sample code for ASP.NET and PHP is given below for reference:
+
+```csharp
+namespace ResponseHandler_ASP_NET
+{
+    [ValidationProperty("false")]
+    public partial class ResponseHandling : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string hash = string.Empty;
+                string[] keys = Request.Form.AllKeys;
+                Array.Sort(keys);
+                string hash_string = string.Empty;
+                hash_string = ConfigurationManager.AppSettings["SALT"];
+                foreach (string hash_var in keys)
+                {
+                    if (Request.Form[hash_var] != "" && hash_var != "hash")
+                    {
+                        hash_string = hash_string + '|';
+                        hash_string = hash_string + Request.Form[hash_var];
+                    }
+                }
+                hash = Generatehash512(hash_string).ToUpper();         //generating hash
+               // Response.Write(Request.Form);
+                string b = Request.Form["hash"];
+                if (Request.Form["hash"] == hash)
+                {
+                    if (Request.Form["response_code"] == "0")
+                    {
+                        Dictionary<string, string> data = new Dictionary<string, string> ();
+
+				        foreach(string item  in keys)
+				        {
+				        	data[item] = Request.Form[item];
+				        }
+				        string json = Newtonsoft.Json.JsonConvert.SerializeObject(data, 				
+					          Newtonsoft.Json.Formatting.Indented);
+				        Response.Write(json);
+                    }
+                    else if(Request.Form["response_message"] == "Transaction Failed"){
+
+                        Response.Write("Transaction is unsuccessful");
+                    }
+                    else
+                    {
+                        string response_message = Request.Form["response_message"];
+                        int startIndex=response_message.IndexOf(" - ")+2;
+                        int length = response_message.Length - startIndex;
+                        response_message = response_message.Substring(startIndex, length);
+                        Response.Write("Correct the below error <br />");
+                        Response.Write(response_message);
+                    }
+                }
+
+                else
+                {
+                    Response.Write("Hash value did not matched");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Response.Write("<span style='color:red'>" + ex.Message + "</span>");
+
+            }
+        }
+        /// <summary>
+        /// Generate HASH for encrypt all parameter passing while transaction
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public string Generatehash512(string text)
+        {
+
+            byte[] message = Encoding.UTF8.GetBytes(text);
+
+            UnicodeEncoding UE = new UnicodeEncoding();
+            byte[] hashValue;
+            SHA512Managed hashString = new SHA512Managed();
+            string hex = "";
+            hashValue = hashString.ComputeHash(message);
+            foreach (byte x in hashValue)
+            {
+                hex += String.Format("{0:x2}", x);
+            }
+            return hex;
+
+        }
+    }
+    
+````
+    
 # Webview Sample Code
 
-> Once the payment is initiated, collect the payment request, calculate the hash from your server and form the url post parameters. Sample code given below: 
+> Once the payment is initiated, collect the payment fields, calculate the hash from your server and form the url post parameters. Sample code given below: 
 
 ```java
 
@@ -348,4 +461,17 @@ public partial class PaymentRequest : System.Web.UI.Page
     requestParams.append("&udf5="+URLDecoder.decode("udf5", "UTF-8"));
     requestParams.append("&hash="+URLDecoder.decode("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UTF-8"));  
            
+```
+
+> Post the parameters to the Traknpay Payment URL and intercept the response page to receive the paramters.
+
+```java
+
+    WebSettings webSettings = webview.getSettings();
+    webSettings.setJavaScriptEnabled(true);
+    webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+    webSettings.setDomStorageEnabled(true);
+    webview.addJavascriptInterface(new MyJavaScriptInterface(), "HtmlViewer");
+    webview.postUrl(SampleAppConstants.PG_HOSTNAME+"/v1/paymentrequest",requestParams.toString().getBytes());
+
 ```
