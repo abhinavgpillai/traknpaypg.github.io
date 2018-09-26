@@ -48,7 +48,7 @@ public class PaymentRequest extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String salt = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
+		String salt = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
 		
 		String [] hash_columns = {"address_line_1", "address_line_2", "amount", "api_key", 
 		"city", "country", "currency","description", "email", "mode", "name", "order_id", 
@@ -109,7 +109,7 @@ public class PaymentRequest extends HttpServlet {
 **PHP Sample Code**
 
 try {
-	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 
 	$params["api_key"]=trim($_POST["api_key"]);
 	$params["amount"]=trim($_POST["amount"]);
@@ -200,7 +200,7 @@ public partial class PaymentRequest : System.Web.UI.Page
             {
                 string hash_string = string.Empty;
                 string hashValue = string.Empty;
-                string SALT = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+                string SALT = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 
                 hash_string = SALT;
                 hash_string += '|' + Request.Form["address_line_1"].Trim();
@@ -344,9 +344,11 @@ API with the actual values of the amount and order id during payment initiation 
  
 ```
 
-> Sample code for ASP.NET and PHP is given below for reference:
+> Sample response API code for ASP.NET and PHP is given below for reference:
 
 ```csharp
+**ASP.NET Sample Response API Code**
+
 namespace ResponseHandler_ASP_NET
 {
     [ValidationProperty("false")]
@@ -361,7 +363,7 @@ namespace ResponseHandler_ASP_NET
                 string[] keys = Request.Form.AllKeys;
                 Array.Sort(keys);
                 string hash_string = string.Empty;
-                hash_string = ConfigurationManager.AppSettings["SALT"];
+                hash_string = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
                 foreach (string hash_var in keys)
                 {
                     if (Request.Form[hash_var] != "" && hash_var != "hash")
@@ -438,7 +440,94 @@ namespace ResponseHandler_ASP_NET
         }
     }
     
-````
+```
+
+
+```php
+**PHP Sample Response API Code**
+
+if(!empty($_POST)){
+
+		if(validResponse($_POST)){
+			$response = $_POST;
+			$salt = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; 
+			if(isset($salt) && !empty($salt)){
+				$response['calculated_hash']=hashCalculate($salt, $response);
+				$response['valid_hash'] = ($response['hash']==$response['calculated_hash'])?'Yes':'No';
+			} else {
+				$response['valid_hash']='No Hash Found';
+			}
+
+			header('Content-Type: application/json');
+			if($response['valid_hash']=='Yes'){
+				echo json_encode([
+					'order_id'=>$_POST['order_id'],
+					'amount'=>$_POST['amount'],
+					'transaction_id'=>$_POST['transaction_id'],
+					'response_message'=>$_POST['response_message'],
+					'response_code'=>$_POST['response_code'],
+				]);
+			}else{
+				echo json_encode(['error'=>'Hash Mismatch']);
+			}
+		}else {
+			echo json_encode(['error'=>'Missing Mandatory Keys in Response']);
+		}
+}else{
+	echo json_encode(['error'=>'Invalid Response']);
+}
+
+function validResponse($response){
+	$mandatory_keys = [
+		'order_id',
+		'amount',
+		'currency',
+		'description',
+		'name',
+		'email',
+		'phone',
+		'city',
+		'country',
+		'zip_code',
+		'return_url',
+		'hash',
+		'response_message',
+		'response_code',
+		'transaction_id',
+	];
+
+	$verified_values=array();
+
+	foreach ($mandatory_keys as $key){
+		array_push($verified_values,array_key_exists($key,$response)? "true":"false");
+	}
+
+	return !in_array("false",$verified_values, true);
+
+}
+
+
+function hashCalculate($salt,$input){
+	unset($input['hash']);
+	ksort($input);
+
+	$hash_data = $salt;
+
+	foreach ($input as $key=>$value) {
+		if (strlen($value) > 0) {
+			$hash_data .= '|' . $value;
+		}
+	}
+
+	$hash = null;
+	if (strlen($hash_data) > 0) {
+		$hash = strtoupper(hash("sha512", $hash_data));
+	}
+
+	return $hash;
+}
+
+```
     
 # Webview Sample Code
 
