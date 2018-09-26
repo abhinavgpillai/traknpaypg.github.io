@@ -292,9 +292,9 @@ public partial class PaymentRequest : System.Web.UI.Page
 
 > Request to your server's Payment Request API would look like below:
 
-```json
+```javascript
 {
-    "amount": "2.00",
+    'amount': '2.00',
     "email": "test@gmail.com",
     "name": "Test Name",
     "phone": "9876543210",
@@ -324,7 +324,7 @@ public partial class PaymentRequest : System.Web.UI.Page
 > Once the payment is initiated, collect the payment request, calculate the hash from your server and form the url post parameters. Sample code given below: 
 
 ```java
-          
+
     StringBuffer requestParams=new StringBuffer("api_key="+URLDecoder.decode(SampleAppConstants.PG_API_KEY, "UTF-8"));
     requestParams.append("&amount="+URLDecoder.decode("2.00", "UTF-8"));
     requestParams.append("&email="+URLDecoder.decode("test@gmail.com", "UTF-8"));
@@ -347,6 +347,5 @@ public partial class PaymentRequest : System.Web.UI.Page
     requestParams.append("&udf4="+URLDecoder.decode("udf4", "UTF-8"));
     requestParams.append("&udf5="+URLDecoder.decode("udf5", "UTF-8"));
     requestParams.append("&hash="+URLDecoder.decode("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UTF-8"));  
-
            
 ```
