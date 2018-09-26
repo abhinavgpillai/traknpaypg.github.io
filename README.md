@@ -589,7 +589,7 @@ function hashCalculate($salt,$input){
 
 ```
 
-| error numeric code  |	error code  |	error description |
+| Error Numeric Code  |	Error Code  |	Error Description |
 | ------------- |:-------------:| -----:|
 | 0 | SUCCESS | Transaction successful |
 | 1000 | FAILED | Transaction failed |
@@ -621,5 +621,32 @@ function hashCalculate($salt,$input){
 | 1026 | INVALID-MERCHANT | Merchant is not active |
 | 1027 | INVALID-TRANSACTION | Invalid transaction |
 | 1028 | TRANSACTION-NOT-FOUND | Transaction not found |
+| 1029 | TRANSACTION-TERMINATED | Transaction terminated |
+| 1030 | TRANSACTION-INCOMPLETE | Transaction incomplete |
+| 1031 | AUTO-REFUNDED | Transaction auto refunded |
+| 1032 | REFUNDED | Transaction refunded |
+| 1033 | SINGLE-TRANSACTION-LOWER-LIMIT-CROSS | The amount provided is less than transaction lower limit |
+| 1034 | SINGLE-TRANSACTION-UPPER-LIMIT-CROSS | The amount provided is more than transaction upper limit |
+| 1035 | TRANSACTION-DAILY-LIMIT-CROSS | The daily transaction limit is exceeded for the merchant |
+| 1036 | TRANSACTION-MONTHLY-LIMIT-CROSS | The monthly transaction limit is exceeded for the merchant |
+| 1037 | DAILY-TRANSACTION-NUMBER-CROSS | The daily transaction number is exceeded for the merchant |
+| 1038 | MONTHLY-TRANSACTION-NUMBER-CROSS | The monthly transaction number is exceeded for the merchant |
+| 1039 | INVALID-REFUND-AMOUNT | The refund amount is greater than transaction amount |
+| 1040 | INVALID-CVV | Invalid Card Verification Code |
+| 1041 | AUTO-REFUNDED-TNP | Transaction is auto refunded by TnP |
+| 1042 | FAILED-NO-RESPONSE | Transaction failed as there was no response from bank |
+| 1043 | TRANSACTION-CANCELLED | Transaction cancelled |
+| 1044 | UNAUTHORIZED | Unauthorized |
+| 1045 | FORBIDDEN | Forbidden Access |
+| 1046 | TRANSACTION-ALREADY-CAPTURED | Transaction already captured |
+| 1047 | AUTHORIZED | Transaction authorized |
+| 1048 | CAPTURED | Transaction captured |
+| 1049 | VOIDED | Transaction voided |
+| 1050 | NO-RECORD-FOUND | No data record found for the given input |
+| 1051 | ACQUIRER-ERROR | Error occurred at the bank end |
+| 1052 | INVALID-EMAIL | Invalid Email ID |
+| 1053 | INVALID-PHONE | Invalid phone number |
+| 9999 | UNKNOWN-ERROR | Unknown error occurred |
+| 997 |  | These are unhandled errors coming from banks directly, errors coming here will eventually be categorized in one of the above error codes or into a new error code. If you are handling error individually then make sure to have a catch all. |
 
 
