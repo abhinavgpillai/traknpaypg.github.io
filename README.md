@@ -591,6 +591,12 @@ function hashCalculate($salt,$input){
 
 ```markdown
 
+|   |   |   |   |   |
+|---|---|---|---|---|
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+
 | Code  | Response Message |  Description  |
 | ----- |------------------| --------------|
 | 0 | SUCCESS | Transaction successful |
