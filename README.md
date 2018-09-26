@@ -325,9 +325,12 @@ public partial class PaymentRequest : System.Web.UI.Page
 
 # Response code have the below 2 components:
 
-1. Your response must have the code to extract the hash from the Traknpay payment response and verify the hash to ensure no data tampering existed between Traknpay server and your server. You must again use SHA-512 algorithm to verify the hash.
+1. Your response must have the code to extract the hash from the Traknpay payment response 
+and verify the hash to ensure no data tampering existed between Traknpay server and your 
+server. You must again use SHA-512 algorithm to verify the hash.
 
-2. If you are using the webview code given in the following section, then you must response the response fields that you need in a json format. 
+2. If you are using the webview code given in the following section, then you must response 
+the response fields that you need in a json format. 
 
 ```
 
@@ -335,7 +338,8 @@ public partial class PaymentRequest : System.Web.UI.Page
 
 # Traknpay Recommendations:
 
-At the very least, you should reverify the amount and order id field on your payment response API with the actual values of the amount and order id during payment initiation in your android app.
+At the very least, you should reverify the amount and order id field on your payment response 
+API with the actual values of the amount and order id during payment initiation in your android app.
 
  
 ```
