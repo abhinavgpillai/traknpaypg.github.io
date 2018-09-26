@@ -110,7 +110,6 @@ public class PaymentRequest extends HttpServlet {
 }
 
 ```
--------------
 
 ```php
 **PHP Sample Code**
@@ -194,7 +193,6 @@ try {
 echo json_encode($output);
 
 ```
--------------
 
 ```csharp
 **ASP.NET Sample Code**
