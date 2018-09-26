@@ -318,3 +318,35 @@ public partial class PaymentRequest : System.Web.UI.Page
 }
 
 ```
+
+# Webview Sample Code
+
+> Once the payment is initiated, collect the payment request, calculate the hash from your server and form the url post parameters. Sample code given below: 
+
+```java
+          
+    StringBuffer requestParams=new StringBuffer("api_key="+URLDecoder.decode(SampleAppConstants.PG_API_KEY, "UTF-8"));
+    requestParams.append("&amount="+URLDecoder.decode("2.00", "UTF-8"));
+    requestParams.append("&email="+URLDecoder.decode("test@gmail.com", "UTF-8"));
+    requestParams.append("&name="+URLDecoder.decode("Test Name", "UTF-8"));
+    requestParams.append("&phone="+URLDecoder.decode("9876543210", "UTF-8"));
+    requestParams.append("&order_id="+URLDecoder.decode("12", "UTF-8"));
+    requestParams.append("&currency="+URLDecoder.decode(SampleAppConstants.PG_CURRENCY, "UTF-8"));
+    requestParams.append("&description="+URLDecoder.decode("test", "UTF-8"));
+    requestParams.append("&city="+URLDecoder.decode("city", "UTF-8"));
+    requestParams.append("&state="+URLDecoder.decode("state", "UTF-8"));
+    requestParams.append("&address_line_1="+URLDecoder.decode("addl1", "UTF-8"));
+    requestParams.append("&address_line_2="+URLDecoder.decode("addl2", "UTF-8"));
+    requestParams.append("&zip_code="+URLDecoder.decode("123456", "UTF-8"));
+    requestParams.append("&country="+URLDecoder.decode(SampleAppConstants.PG_COUNTRY, "UTF-8"));
+    requestParams.append("&return_url="+URLDecoder.decode(SampleAppConstants.PG_RETURN_URL, "UTF-8"));
+    requestParams.append("&mode="+URLDecoder.decode(SampleAppConstants.PG_MODE, "UTF-8"));
+    requestParams.append("&udf1="+URLDecoder.decode("udf1", "UTF-8"));
+    requestParams.append("&udf2="+URLDecoder.decode("udf2", "UTF-8"));
+    requestParams.append("&udf3="+URLDecoder.decode("udf3", "UTF-8"));
+    requestParams.append("&udf4="+URLDecoder.decode("udf4", "UTF-8"));
+    requestParams.append("&udf5="+URLDecoder.decode("udf5", "UTF-8"));
+    requestParams.append("&hash="+URLDecoder.decode(SampleAppConstants.HASH, "UTF-8"));  
+
+           
+```
