@@ -43,6 +43,7 @@ major languages would have an in-house function to calculate the hash using SHA-
 android app.
 
 ```
+![Hash Calculation](https://traknpaypg.github.io/doc/images/hash.png?raw=true)
 
 ```markdown
 # Traknpay Recommendation:
