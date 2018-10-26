@@ -537,7 +537,6 @@ function validResponse($response){
 		'city',
 		'country',
 		'zip_code',
-		'return_url',
 		'hash',
 		'response_message',
 		'response_code',
