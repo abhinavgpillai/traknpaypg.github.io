@@ -306,7 +306,7 @@ public partial class PaymentRequest : System.Web.UI.Page
 ```
 -------------
 
-> Request to your server's Payment Request API would look like below:
+> Request to your server's Hash Calculation API would look like below:
 
 ```javascript
 {
