@@ -54,6 +54,14 @@ You must securly store the SALT key in your server. Compromise of the same would
 
 > Sample Hash Generation of Payment Request for different languages has been given below:
 
+```markdown
+# Important:
+
+Sample Codes given below are just for understanding. Client must secure the API with the latest industry standard encryptions. 
+
+```
+
+
 ```java
 **Java Servlet Sample Code**
 
