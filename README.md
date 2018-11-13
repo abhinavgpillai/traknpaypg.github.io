@@ -57,8 +57,8 @@ You must securly store the SALT key in your server. Compromise of the same would
 ```markdown
 # Important:
 
-Sample Codes given below are just for understanding. Client must secure the API with 
-the latest industry standard encryptions. 
+Sample Codes given below are just for understanding. Client must secure the API with the latest 
+industry standard encryptions. 
 
 ```
 
