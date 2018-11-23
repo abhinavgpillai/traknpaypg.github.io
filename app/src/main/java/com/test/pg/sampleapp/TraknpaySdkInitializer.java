@@ -28,16 +28,9 @@ public class TraknpaySdkInitializer {
 
         Builder builder = null;
         private HashMap<String, String> params = new LinkedHashMap<>();
-
         private String packageName = "";
         private String className = "";
-
         private String pipedHash = "";
-
-        public String getReturnURL() {
-            HashMap<String, String> params = getParams();
-            return params.get(TraknpayConstants.RETURN_URL);
-        }
 
         public void setReturnPackage(String packageName) {
             this.packageName = packageName;
@@ -45,83 +38,6 @@ public class TraknpaySdkInitializer {
 
         public void setReturnClass(String className) {
             this.className = className;
-        }
-
-        public String getReturnActivityPackage() {
-            return this.packageName;
-        }
-
-        public String getReturnActivityClass() {
-            return this.className;
-        }
-
-        public String buildParamsForPayment() {
-            HashMap<String, String> params = getParams();
-
-            StringBuffer postParamsBuffer = new StringBuffer();
-            postParamsBuffer.append(concatParams(TraknpayConstants.API_KEY, params.get(TraknpayConstants.API_KEY)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.AMOUNT, params.get(TraknpayConstants.AMOUNT)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.EMAIL, params.get(TraknpayConstants.EMAIL)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.NAME, params.get(TraknpayConstants.NAME)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.PHONE, params.get(TraknpayConstants.PHONE)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.ORDER_ID, params.get(TraknpayConstants.ORDER_ID)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.CURRENCY, params.get(TraknpayConstants.CURRENCY)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.DESCRIPTION, params.get(TraknpayConstants.DESCRIPTION)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.CITY, params.get(TraknpayConstants.CITY)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.STATE, params.get(TraknpayConstants.STATE)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.ADDRESS_LINE1, params.get(TraknpayConstants.ADDRESS_LINE1)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.ADDRESS_LINE2, params.get(TraknpayConstants.ADDRESS_LINE2)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.ZIPCODE, params.get(TraknpayConstants.ZIPCODE)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.COUNTRY, params.get(TraknpayConstants.COUNTRY)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.RETURN_URL, params.get(TraknpayConstants.RETURN_URL)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.MODE, params.get(TraknpayConstants.MODE)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.HASH, params.get(TraknpayConstants.HASH)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.UDF1, params.get(TraknpayConstants.UDF1)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.UDF2, params.get(TraknpayConstants.UDF2)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.UDF3, params.get(TraknpayConstants.UDF3)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.UDF4, params.get(TraknpayConstants.UDF4)));
-            postParamsBuffer.append(concatParams(TraknpayConstants.UDF5, params.get(TraknpayConstants.UDF5)));
-
-            String postParams = postParamsBuffer.charAt(postParamsBuffer.length() - 1) == '&' ? postParamsBuffer.substring(0, postParamsBuffer.length() - 1).toString() : postParamsBuffer.toString();
-
-            return postParams;
-        }
-
-        protected String concatParams(String key, String value) {
-            return key + "=" + value + "&";
-        }
-
-        public String getFormDataForPayment(){
-
-            StringBuilder sb = new StringBuilder();
-            HashMap<String, String> postData = getParams();
-
-            try{
-                String url="";
-                if(postData.get(TraknpayConstants.MODE)=="TEST"){
-                    url= URLDecoder.decode(TraknpayConstants.TEST_PAYMENT_URL, "UTF-8");
-                }else{
-                    url= URLDecoder.decode(TraknpayConstants.PAYMENT_URL, "UTF-8");
-                }
-
-                System.out.println(url);
-                sb.append("<html>");
-                sb.append("<body OnLoad=\"OnLoadEvent();\">");
-                sb.append(String.format("<form name=\"form1\" action=\"%s\" method=\"%s\">", url, "post"));
-                for (Map.Entry<String, String> item : postData.entrySet()) {
-
-                    if(item.getKey().equals("return_url")){
-                        sb.append(String.format("<input name=\"%s\" type=\"hidden\" value=\"%s\" />", item.getKey(), URLDecoder.decode(item.getValue(), "UTF-8")));
-                    }else{
-                        sb.append(String.format("<input name=\"%s\" type=\"hidden\" value=\"%s\" />", item.getKey(), item.getValue()));
-                    }
-                }
-                sb.append("</form><script language=\"JavaScript\"> function OnLoadEvent() { document.form1.submit(); }</script></body></html>");
-            }catch (UnsupportedEncodingException e){
-                e.printStackTrace();
-            }
-
-            return sb.toString();
         }
 
         private PaymentParam(Builder builder) {
@@ -285,10 +201,6 @@ public class TraknpaySdkInitializer {
 
         public HashMap<String, String> getParams() {
             return params;
-        }
-
-        public void setMerchantHash(String serverCalculatedHash) {
-            params.put(TraknpayConstants.HASH, serverCalculatedHash);
         }
 
         @Override
