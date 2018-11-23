@@ -9,6 +9,12 @@
 # Sample App
 > To understand the Traknpay payment flow, you can download our sample app [here](https://github.com/traknpaypg/traknpaypg.github.io).
 
+```markdown
+# Important Note:
+Sample Codes given below are just for understanding. Client must secure the API with the latest 
+industry standard encryptions. 
+```
+
 -------------
 
 # Prerequisites
@@ -769,4 +775,4 @@ class MyJavaScriptInterface {
 
 # Contact Us
 
-> For any issues regarding the code, please write in to: `abhinav.pillai@omniware.in`
+> For any issues regarding the code, please write in to: `care@traknpay.com`
