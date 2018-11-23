@@ -11,8 +11,8 @@
 
 ```json
 # Important Note:
-Sample Codes given below are just for understanding. Client must secure the API with the latest 
-industry standard encryptions. 
+Sample Codes given above is just for understanding. Client must secure the API with the latest 
+industry standard encryptions to ensure end to end security. 
 ```
 
 -------------
