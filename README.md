@@ -9,7 +9,7 @@
 # Sample App
 > To understand the Traknpay payment flow, you can download our sample app [here](https://github.com/traknpaypg/traknpaypg.github.io).
 
-```diff
+```json
 # Important Note:
 Sample Codes given below are just for understanding. Client must secure the API with the latest 
 industry standard encryptions. 
