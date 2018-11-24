@@ -34,6 +34,8 @@ Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. 
 hash, a secure private key known as **SALT key** will be provided by Traknpay that needs to be 
 stored **very securely in your server**. Any compromise of the salt may lead to data tampering. 
 
+![Hash Calculation Architecture Overview](https://traknpaypg.github.io/doc/images/Hash_Calculation_Traknpay.jpg?raw=true)
+
 # The hash generation code has 3 components:
 
 1. **Concatenate** the request parameters(after **trimming** the blank spaces) separated by 
@@ -49,8 +51,6 @@ major languages would have an in-house function to calculate the hash using SHA-
 android app.
 
 ```
-![Hash Calculation Architecture Overview](https://traknpaypg.github.io/doc/images/Hash_Calculation_Traknpay.jpg?raw=true)
-
 ![Hash Calculation](https://traknpaypg.github.io/doc/images/hash.png?raw=true)
 
 ```markdown
