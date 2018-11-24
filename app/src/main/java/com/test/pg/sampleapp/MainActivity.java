@@ -26,7 +26,6 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     ProgressBar pb;
     private String paymentParams;
-    private TraknpaySdkInitializer.PaymentParam mPaymentParams;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,36 +45,34 @@ public class MainActivity extends AppCompatActivity {
                 int n = 100000 + rnd.nextInt(900000);
                 SampleAppConstants.PG_ORDER_ID=Integer.toString(n);
 
-                TraknpaySdkInitializer.PaymentParam.Builder builder = new TraknpaySdkInitializer.PaymentParam.Builder();
-                builder.setAPiKey(SampleAppConstants.PG_API_KEY)
-                        .setAmount(SampleAppConstants.PG_AMOUNT)
-                        .setEmail(SampleAppConstants.PG_EMAIL)
-                        .setName(SampleAppConstants.PG_NAME)
-                        .setPhone(SampleAppConstants.PG_PHONE)
-                        .setOrderId(SampleAppConstants.PG_ORDER_ID)
-                        .setCurrency(SampleAppConstants.PG_CURRENCY)
-                        .setDescription(SampleAppConstants.PG_DESCRIPTION)
-                        .setCity(SampleAppConstants.PG_CITY)
-                        .setState(SampleAppConstants.PG_STATE)
-                        .setAddressLine1(SampleAppConstants.PG_ADD_1)
-                        .setAddressLine2(SampleAppConstants.PG_ADD_2)
-                        .setZipCode(SampleAppConstants.PG_ZIPCODE)
-                        .setCountry(SampleAppConstants.PG_COUNTRY)
-                        .setReturnUrl(SampleAppConstants.PG_RETURN_URL)
-                        .setMode(SampleAppConstants.PG_MODE)
-                        .setUdf1(SampleAppConstants.PG_UDF1)
-                        .setUdf2(SampleAppConstants.PG_UDF2)
-                        .setUdf3(SampleAppConstants.PG_UDF3)
-                        .setUdf4(SampleAppConstants.PG_UDF4)
-                        .setUdf5(SampleAppConstants.PG_UDF5)
-                        .setReturnActivityPackage(SampleAppConstants.PG_RETURN_ACTIVITY_PACKAGE)
-                        .setReturnActivityClass(SampleAppConstants.PG_RETURN_ACTIVITY_CLASS);
 
-                mPaymentParams = builder.build();
-                paymentParams = builder.buildParamsForhash(mPaymentParams);
+                StringBuffer postParamsBuffer = new StringBuffer();
+                postParamsBuffer.append(concatParams(TraknpayConstants.API_KEY, SampleAppConstants.PG_API_KEY));
+                postParamsBuffer.append(concatParams(TraknpayConstants.AMOUNT, SampleAppConstants.PG_AMOUNT));
+                postParamsBuffer.append(concatParams(TraknpayConstants.EMAIL, SampleAppConstants.PG_EMAIL));
+                postParamsBuffer.append(concatParams(TraknpayConstants.NAME, SampleAppConstants.PG_NAME));
+                postParamsBuffer.append(concatParams(TraknpayConstants.PHONE, SampleAppConstants.PG_PHONE));
+                postParamsBuffer.append(concatParams(TraknpayConstants.ORDER_ID, SampleAppConstants.PG_ORDER_ID));
+                postParamsBuffer.append(concatParams(TraknpayConstants.CURRENCY, SampleAppConstants.PG_CURRENCY));
+                postParamsBuffer.append(concatParams(TraknpayConstants.DESCRIPTION, SampleAppConstants.PG_DESCRIPTION));
+                postParamsBuffer.append(concatParams(TraknpayConstants.CITY, SampleAppConstants.PG_CITY));
+                postParamsBuffer.append(concatParams(TraknpayConstants.STATE, SampleAppConstants.PG_STATE));
+                postParamsBuffer.append(concatParams(TraknpayConstants.ADDRESS_LINE1, SampleAppConstants.PG_ADD_1));
+                postParamsBuffer.append(concatParams(TraknpayConstants.ADDRESS_LINE2, SampleAppConstants.PG_ADD_2));
+                postParamsBuffer.append(concatParams(TraknpayConstants.ZIPCODE, SampleAppConstants.PG_ZIPCODE));
+                postParamsBuffer.append(concatParams(TraknpayConstants.COUNTRY, SampleAppConstants.PG_COUNTRY));
+                postParamsBuffer.append(concatParams(TraknpayConstants.RETURN_URL, SampleAppConstants.PG_RETURN_URL));
+                postParamsBuffer.append(concatParams(TraknpayConstants.MODE, SampleAppConstants.PG_MODE));
+                postParamsBuffer.append(concatParams(TraknpayConstants.UDF1, SampleAppConstants.PG_UDF1));
+                postParamsBuffer.append(concatParams(TraknpayConstants.UDF2, SampleAppConstants.PG_UDF2));
+                postParamsBuffer.append(concatParams(TraknpayConstants.UDF3, SampleAppConstants.PG_UDF3));
+                postParamsBuffer.append(concatParams(TraknpayConstants.UDF4, SampleAppConstants.PG_UDF4));
+                postParamsBuffer.append(concatParams(TraknpayConstants.UDF5, SampleAppConstants.PG_UDF5));
+
+                String hashParams = postParamsBuffer.charAt(postParamsBuffer.length() - 1) == '&' ? postParamsBuffer.substring(0, postParamsBuffer.length() - 1).toString() : postParamsBuffer.toString();
 
                 GetHashesFromServerTask getHashesFromServerTask = new GetHashesFromServerTask();
-                getHashesFromServerTask.execute(paymentParams);
+                getHashesFromServerTask.execute(hashParams);
 
             }
         });
@@ -85,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         pb.setVisibility(View.GONE);
+    }
+
+    protected String concatParams(String key, String value) {
+        return key + "=" + value + "&";
     }
 
     private class GetHashesFromServerTask extends AsyncTask<String, String, String> {

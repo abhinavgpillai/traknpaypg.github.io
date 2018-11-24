@@ -5,7 +5,7 @@ public class SampleAppConstants {
     public static final String PG_API_KEY = "<your_API_key>";
 
     //HOSTNAME is given by the Payment Gateway. Please Copy Paste Here.
-    public static final String PG_HOSTNAME = "https://biz.traknpay.in";
+    public static final String PG_HOSTNAME = "<traknpay_hostname>";
 
     //URL to Accept Payment Response After Payment. This needs to be done at the client's web server.
     public static final String PG_RETURN_URL = "<your_return_url>";
@@ -39,7 +39,5 @@ public class SampleAppConstants {
     public static final String PG_UDF3 = "udf3";
     public static final String PG_UDF4 = "udf4";
     public static final String PG_UDF5 = "udf5";
-    public static final String PG_RETURN_ACTIVITY_PACKAGE = "com.test.pg.sampleapp";
-    public static final String PG_RETURN_ACTIVITY_CLASS = "com.test.pg.sampleapp.ResponseActivity";
 
 }
