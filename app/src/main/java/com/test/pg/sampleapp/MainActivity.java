@@ -41,11 +41,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pb.setVisibility(View.VISIBLE);
+
+                //Since Order ID should be unique, we will use a random integer as order ID during every payment.
                 Random rnd = new Random();
                 int n = 100000 + rnd.nextInt(900000);
                 SampleAppConstants.PG_ORDER_ID=Integer.toString(n);
 
 
+
+                //Make query string parameters from the user input.
                 StringBuffer postParamsBuffer = new StringBuffer();
                 postParamsBuffer.append(concatParams(TraknpayConstants.API_KEY, SampleAppConstants.PG_API_KEY));
                 postParamsBuffer.append(concatParams(TraknpayConstants.AMOUNT, SampleAppConstants.PG_AMOUNT));
@@ -71,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String hashParams = postParamsBuffer.charAt(postParamsBuffer.length() - 1) == '&' ? postParamsBuffer.substring(0, postParamsBuffer.length() - 1).toString() : postParamsBuffer.toString();
 
+                //Now use the query string obtained above to POST the payment details to your WebServer's Hash API.
                 GetHashesFromServerTask getHashesFromServerTask = new GetHashesFromServerTask();
                 getHashesFromServerTask.execute(hashParams);
 
@@ -156,8 +161,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Could not generate hash", Toast.LENGTH_SHORT).show();
             }else{
                 //Toast.makeText(MainActivity.this, "generated hash: "+merchantHash, Toast.LENGTH_SHORT).show();
-                System.out.println("hash : "+merchantHash);
+                System.out.println("Calculated Hash : "+merchantHash);
 
+                //Now send the Hash to the Payment Activity.
                 Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
                 intent.putExtra("calculatedHash", merchantHash);
                 startActivity(intent);
