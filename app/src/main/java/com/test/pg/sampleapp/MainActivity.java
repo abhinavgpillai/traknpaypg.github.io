@@ -42,11 +42,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pb.setVisibility(View.VISIBLE);
 
-                //Since Order ID should be unique, we will use a random integer as order ID during every payment.
+                //Since Order ID should be unique, we will use a random integer as order ID for every payment.
                 Random rnd = new Random();
                 int n = 100000 + rnd.nextInt(900000);
                 SampleAppConstants.PG_ORDER_ID=Integer.toString(n);
-
 
 
                 //Make query string parameters from the user input.
@@ -75,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
                 String hashParams = postParamsBuffer.charAt(postParamsBuffer.length() - 1) == '&' ? postParamsBuffer.substring(0, postParamsBuffer.length() - 1).toString() : postParamsBuffer.toString();
 
-                //Now use the query string obtained above to POST the payment details to your WebServer's Hash API.
+                //To obtain the Hash Key for the payment details, POST the query string obtained above
+                // to your WebServer's Hash API using the below AsyncTask.
                 GetHashesFromServerTask getHashesFromServerTask = new GetHashesFromServerTask();
                 getHashesFromServerTask.execute(hashParams);
 
@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class GetHashesFromServerTask extends AsyncTask<String, String, String> {
-        private ProgressDialog progressDialog;
 
         @Override
         protected void onPreExecute() {
